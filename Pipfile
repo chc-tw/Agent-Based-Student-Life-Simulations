@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+langchain = "*"
+langchain-openai = "*"
+langchain-pinecone = "*"
+python-dotenv = "*"
+langchainhub = "*"
+black = "*"
+langchain-ollama = "*"
+langchain-text-splitters = "*"
+dataclasses = "*"
+langchain-core = "*"
+langchain-community = "*"
+pypdf = "*"
+langchain-chroma = "*"
+
+[dev-packages]
+ipykernel = "*"
+
+[requires]
+python_version = "3.12"

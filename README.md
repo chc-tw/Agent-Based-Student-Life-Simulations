@@ -46,10 +46,13 @@ pipenv install
 ```
 
 ## Run the simulation
-You can re-run the simulation with your own textbook by running following command (In our case, we use textbook of "Operating System Concepts by Avi Silberschatz, Peter Baer Galvin, and Greg Gagne" as the learning material):
+You can re-run the simulation by running following command (In our case, we use textbook of "Operating System Concepts by Avi Silberschatz, Peter Baer Galvin, and Greg Gagne" as the learning material):
 ```bash
-pipenv run python main.py --textbook <path_to_textbook>
+pipenv run python main.py
 ```
+## Customize the simulation
+You can customize the simulation by changing the config in `configs/config.yaml`.
+
 # Future Works
 - [x] Enable using local model to perform simulation
 - [ ] Enable customizing the simulation environment, including:

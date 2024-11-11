@@ -1,0 +1,4 @@
+.env
+*.ipynb
+prompt.py
+temp*
