@@ -1,6 +1,6 @@
 System:
   DAYS : 56 # 8 Weeks
-  PDF_PATH : 
+  PDF_PATH : textbook.pdf
 Agent:
   LOCAL : False
   MAX_TOKEN : 0.5
