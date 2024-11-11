@@ -44,7 +44,7 @@ class StudentAgent:
         self.history.append(f"Day{len(self.history)}: studied")
         input_prompt = """
         <material>
-        {material}~
+        {material}
         </material>
         Your summary:
         """
