@@ -1,5 +1,5 @@
 # Agent-Based Student Life Simulations: Discovering the Balance Between Learning and Living
-In this repository, we explore the concept of agent-based simulations to model student life. The goal is to discover the balance between learning and living. We utilize the prompt engineering to simulate the student's learning properties and RAG (Retrieval Augmented Generation) to simulate the student's memory.
+In this project, we explore the concept of agent-based simulations to model student life. The goal is to discover the balance between learning and living. We utilize the prompt engineering to simulate the student's learning properties and RAG (Retrieval Augmented Generation) to simulate the student's memory.
 
 ## Experiment Design
 ### Agent Settings
@@ -16,20 +16,20 @@ Besides, we design 4 different agents with different personalities and learning 
 - **Impossible**: Aims to balance everything in life - doesn’t want to be sick, tired, or depressed, but also wants to achieve good grades.
   
 ### Simulation Design
-We simulate the student life in a university environment. The whole experiemnt will last 6 weeks, just like a half semester. Every day, the agent will receive a material, and can choose following activities:
-- **Study**: The agents can choose to reduce mood and energy to study their daily material. If they don’t study, the material will accumulate, and the next time they choose to study, they will have to cover all the accumulated materials at once.
+We simulate the student life in a university environment. The whole experiemnt will last 6 weeks, just like a half semester. Every day, the agent will receive a material, and consider the history of activities and current status to choose one of the following activities to do:
+- **Study**: The agents can choose to reduce mood and energy to study their daily material. If they don’t study, the material will accumulate, and the next time they choose to study, they have to study all the accumulated materials at once, leading to a bad study performance.
 - **Take Course**: (Monday Only) The agents can choose to reduce mood and energy to take a course. If they do so, they will obtain the guidance of material this week from the teacher.
 - **Socialize**: The agents can choose to reduce energy to add friends and increase their mood.
 - **Relax**: The agents can choose to rest to increase their mood.
-- **Sleep**: The agents can choose to sleep to increase their health.
+- **Sleep**: The agents can choose to sleep to increase their energy.
 - **Exercise**: The agents can choose to exercise to increase their health.
-- 
+
 #### Status Interaction
 - Days since last time study: At the end of each week, the agent would forget some of their memories (the knowledge they learned) based on this formula: $100\times \text{forgetting factor}^{\text{days after last study}}\%$. The default forgetting factor is 0.9.
 - Health: The agent will have a probability to get sick based on this formula: $\text{health}\%$. Once the agent gets sick, the agent won't be able to attend the course on Monday.
-- number of friends: The agent can can have better study ability if they have more friends. One friend provides 10% more study ability.
+- Number of Friends: The agent can can have better study ability if they have more friends. One friend provides 10% more study ability.
 
-After whole simulation, agents will have a final exam to test their study result.
+After whole simulation, agents will have a final exam to validate their study result.
 
 ## Way to Simulate Student's Behavior
 - **Learning Simulation**: We ask LLM to do the summarization of the material to simulate the student's learning.
@@ -38,7 +38,7 @@ After whole simulation, agents will have a final exam to test their study result
 - **Memory and Forget**: We use a vector database to store the student's memories. Once the student forgets something, we remove the vector from the database randomly.
 - **Take Exam**: We use RAG to simulate student's memory and answer the exam.
 
-# Usage
+# Run Simulation
 ## Environment Setup
 You can build the environment by running following command:
 ```bash
