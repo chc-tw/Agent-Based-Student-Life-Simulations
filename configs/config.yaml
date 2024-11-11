@@ -1,11 +1,17 @@
 System:
-  LOCAL : False
+  DAYS : 56 # 8 Weeks
+  PDF_PATH : 
 Agent:
+  LOCAL : False
   MAX_TOKEN : 0.5
-  MODEL : 
+  MODEL : "gpt-4o-mini"
+  LOCAL_MODEL: "llama3.1:8b"
 Memory:
+  LOCAL : False
   CHUNK_SIZE : 2000
-  OVERLAP : 500
+  OVERLAP : 200
+  EMBED : "" #OpenAIEmbeddings
+  LOCAL_EMBED : nomic-embed-text
 Status:
   loss_mood_study : 10
   loss_energy_study : 10
