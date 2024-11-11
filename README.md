@@ -51,6 +51,7 @@ You can re-run the simulation with your own textbook by running following comman
 pipenv run python main.py --textbook <path_to_textbook>
 ```
 # Future Works
+- [x] Enable using local model to perform simulation
 - [ ] Enable customizing the simulation environment, including:
   - [ ] Learning textbooks & Exam questions
   - [ ] Agents' personalities
