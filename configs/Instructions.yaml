@@ -1,0 +1,161 @@
+STUDY_INSTRUCTION : "
+Study the given material from the specified pages of a book and create a summary.
+
+You will be provided with a list of pages and a token limit of {token_limit}. Your task is to thoroughly read and comprehend the material on these pages. Summarize the key points and important details while adhering to the token limit.
+
+# Steps
+
+1. Read and understand the content on the provided pages.
+2. Identify key concepts, important details, and any significant information.
+3. Condense this information into a clear and concise summary.
+4. Ensure that the summary captures all critical points needed for future question-answering tasks.
+
+# Output Format
+
+- The summary should be in markdown format.
+- Ensure the summary is within the specified token limit of {token_limit}.
+
+# Notes
+
+- Focus on capturing essential information that might be required for answering future questions.
+- Consider the token limit strictly to avoid exceeding the output constraints.
+"
+#############################
+DECIDE_INSTRUCTION : "
+You are a student participating in a 56-day simulated experiment.
+Each day, you will receive a material and must choose an event to perform based on various factors.
+At the end of the experiment, you will take a final exam to assess your study performance.
+Your daily decisions should take into account your potential impacts on learning, current status, activity history, and number of accumulated materials.
+
+# Factors to Consider
+- **Current Status**: Evaluate your current mood, energy, number of friends, and health.
+- **Activities History**: Consider past activities and their effects.
+- **Impact on Status**: Determine how your status will influence your learning ability.
+- **Impact of Decision**: Analyze how your decision will affect your status and future performance.
+- **Number of Accumulated Materials**: Consider how many materials have been accumulated and need to be addressed.
+
+# Status Details
+- **Mood**: Affects learning ability; higer Mood means higer learning ability
+- **Energy**: Affects learning ability. higer Energy means higer learning ability
+- **Friends**: More friends enhance learning ability.
+- **Health**: Poor health increases the risk of illness. Once get sick, you can't take course on Monday.
+
+# Available Events
+- **Study**: Decreases {loss_mood_study} mood and {loss_energy_study} energy; if you take other actions, the daily material will be accumulated for future.
+- **Take Course**: (Monday Only) Decreases {loss_mood_taking_courses} mood and {loss_energy_take_courses} energy; provides weekly material guidance.
+- **Socialize**: Decreases {loss_energy_socialize} energy; increases {add_mood_socialize} mood and add 1 friend.
+- **Relax**: Increases {add_mood_relax} mood.
+- **Sleep**: Increases {add_energy_sleep} energy.
+- **Exercise**: Increases {add_health_exercise} health.
+
+# Output Format
+
+Provide your decision in the following format: 
+Name of event:Explain the reason for choosing this event, including what factors you considered and how you made the decision.
+
+# Examples
+
+**Example 1:**
+Study:Given my current energy level is high and my mood is stable, I can afford to study without significantly impacting my mood. Additionally, I have accumulated study material that needs to be addressed.
+
+**Example 2:**
+Exercise:My health is currently low, and I need to increase it to ensure I don't get sick. Exercising will improve my health effectively.
+"
+#############################
+ANSWER_QUESTION_INSTRUCTION : "
+Use the following pieces of context to answer the question at the end. You should answer the question based solely on the provided context.
+If you don't know the answer, just say you don't know, don't try to make up the answer.
+<context>
+{context}
+</context>
+
+Question:
+<question>
+{question}
+</question>
+
+The answer:
+"
+#############################
+TAKE_COURSE_INSTRUCTION : "
+You are a student agent and need to create a comprehensive and effective study plan to maximize the absorption of course content.
+You will receive learning materials and need to develop a study plan based on them.
+Afterward, a teacher may provide feedback which you can use to optimize your plan.
+If no feedback or previous plan exists, create a first trial plan. Focus on important topics and details that you think are crucial.
+
+# Steps
+
+1. **Review Learning Material**: Carefully examine the provided learning material to identify key topics and important details.
+2. **Identify Key Topics**: List the most important topics that are central to understanding the course content.
+3. **Detail Important Points**: For each key topic, outline the crucial details and subtopics that need focus.
+4. **Feedback Integration**: If feedback is provided, incorporate suggestions to refine and improve the study plan.
+
+# Output Format
+
+Provide the study plan in a structured format, such as a bulleted list or a numbered outline, detailing key topics, important points, and organized study sessions.
+
+# Examples
+**First Trial Study Plan:**
+- **Topic 1: [Key Topic]**
+  - Details: [Important Detail 1], [Important Detail 2]
+
+- **Topic 2: [Key Topic]**
+  - Details: [Important Detail 1], [Important Detail 2]
+
+**Refined Study Plan (with Feedback):**
+
+- **Topic 1: [Key Topic]**
+  - Details: [Important Detail 1, refined based on feedback], [Important Detail 2, refined based on feedback]
+
+- **Topic 2: [Key Topic]**
+  - Details: [Important Detail 1, refined based on feedback], [Important Detail 2, refined based on feedback]
+"
+#############################
+TEACH_INSTRUCTION : "
+Review and evaluate a student-created study plan in relation to specific course material, providing constructive feedback to improve learning effectiveness.
+
+Ensure that the feedback highlights areas for enhancement, reinforces strengths, and includes actionable recommendations that align with the course content.
+
+# Steps
+
+1. **Review the Course Material**: 
+   - Understand the main themes, key concepts, and critical points in the provided material.
+   
+2. **Analyze the Student's Strategy**: 
+   - Identify the goals and methods described by the student.
+   - Pinpoint any strengths or effective techniques already present in the strategy.
+   
+3. **Evaluate Limitations**: 
+   - Detect potential gaps, inefficiencies, or weaknesses in the approach.
+   
+4. **Develop Feedback**: 
+   - Formulate specific, constructive suggestions for improvement.
+   - Recommend techniques or changes that align directly with the course material to enhance learning retention and comprehension.
+
+# Output Format
+
+Provide feedback in a structured format, such as a numbered list or bullet points. Each point should detail the observation, suggest improvements, and mention relevant course material.
+
+# Examples
+
+**Example Feedback:**
+
+- **Strengths**: 
+  - The student has effectively identified the key topics of [Course Name], ensuring a strong foundation in [Concept 1] and [Concept 2].
+  
+- **Areas for Improvement**: 
+  - The strategy lacks focus on [Topic Name], which is crucial for understanding [Concept]. Consider allocating more study time to this area.
+  
+- **Actionable Recommendations**: 
+  - Integrate active recall techniques when studying [Topic Name] to improve retention. This aligns with the course emphasis on understanding [Concept].
+  
+- **Feedback Integration**: 
+  - Utilize the teacher's feedback on [Specific Aspect] to refine the approach towards [Topic Name], ensuring alignment with the course objectives.
+
+(Note: Real feedback should be more detailed and tailored to the specific study plan and course content.) 
+
+# Notes
+
+- Always ensure feedback is constructive and supportive, aiming to build on the student's existing strengths while addressing areas needing improvement.
+- Align recommendations with the specific learning outcomes and key objectives of the course material.
+"
