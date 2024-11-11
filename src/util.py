@@ -1,12 +1,7 @@
 from langchain_core.documents import Document
-from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
-
-load_dotenv()
-
-
 
 def fetch_pages(page_range  : tuple[int, int], docs : list[Document]) -> str:
     pages = []
