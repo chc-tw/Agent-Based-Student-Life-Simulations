@@ -14,6 +14,7 @@ def format_docs(docs):
 class Memory:
     def __init__(self, config : dict, instructions : dict, llm, namespace : str):
         self.config = config
+        self.namespace = namespace
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=config['CHUNK_SIZE'],
             chunk_overlap=config['OVERLAP'],
