@@ -16,7 +16,7 @@ Besides, we design 4 different agents with different personalities and learning 
 - **Impossible**: Aims to balance everything in life - doesn’t want to be sick, tired, or depressed, but also wants to achieve good grades.
   
 ### Simulation Design
-We simulate the student life in a university environment. The whole experiemnt will last 6 weeks, just like a half semester. Every day, the agent will receive a material, and consider the history of activities and current status to choose one of the following activities to do:
+We simulate the student life in a university environment. The whole experiemnt will last 8 weeks, just like a half semester. Every day, the agent will receive a material, and consider the history of activities and current status to choose one of the following activities to do:
 - **Study**: The agents can choose to reduce mood and energy to study their daily material. If they don’t study, the material will accumulate, and the next time they choose to study, they have to study all the accumulated materials at once, leading to a bad study performance.
 - **Take Course**: (Monday Only) The agents can choose to reduce mood and energy to take a course. If they do so, they will obtain the guidance of material this week from the teacher.
 - **Socialize**: The agents can choose to reduce energy to add friends and increase their mood.
