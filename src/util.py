@@ -28,6 +28,17 @@ def generate_personality(personality_description: str) -> str:
     chain = llm | StrOutputParser()
     return chain.invoke(messages)
 
+
+
+WEEKDAY = {
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday",
+    0: "Sunday"
+}
 META_PROMPT = """
 Given a task description or existing prompt, produce a detailed system prompt to guide a language model in completing the task effectively.
 

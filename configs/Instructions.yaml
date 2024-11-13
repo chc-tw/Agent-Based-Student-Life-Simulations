@@ -1,5 +1,5 @@
 STUDY_INSTRUCTION : "
-Study the given material from the specified pages of a book and create a summary.
+Study the given material from the specified pages of a book and create a summary. If a study plane available, follow the study plane to study.
 
 You will be provided with a list of pages and a token limit of {token_limit}. Your task is to thoroughly read and comprehend the material on these pages. Summarize the key points and important details while adhering to the token limit.
 
@@ -11,12 +11,10 @@ You will be provided with a list of pages and a token limit of {token_limit}. Yo
 4. Ensure that the summary captures all critical points needed for future question-answering tasks.
 
 # Output Format
-
 - The summary should be in markdown format.
 - Ensure the summary is within the specified token limit of {token_limit}.
 
 # Notes
-
 - Focus on capturing essential information that might be required for answering future questions.
 - Consider the token limit strictly to avoid exceeding the output constraints.
 "
@@ -35,18 +33,25 @@ Your daily decisions should take into account your potential impacts on learning
 - **Number of Accumulated Materials**: Consider how many materials have been accumulated and need to be addressed.
 
 # Status Details
-- **Mood**: Affects learning ability; higer Mood means higer learning ability
-- **Energy**: Affects learning ability. higer Energy means higer learning ability
-- **Friends**: More friends enhance learning ability.
-- **Health**: Poor health increases the risk of illness. Once get sick, you can't take course on Monday.
+- **Mood**: Affects learning ability; higer Mood means higer learning ability. Default: 100
+- **Energy**: Affects learning ability. higer Energy means higer learning ability Default: 100
+- **Friends**: More friends enhance learning ability. Default: 0
+- **Health**: Poor health increases the risk of illness. Once get sick, you can't take course on Monday. Default: 100
+- **Learning Ability**: Represent your learning ability, which is calculated by `max(10, (mood + energy)/2 * (friends * 10))`%, so even if you never sleep or relax, you will still have 10% learning ability. Default: 100
+
+## Status Impaces
+- **Mood and Energy** : 10 Mood or Enery means 5% learning ability. If Mood or Energy are extemely low, your learning ability will remain 10% only.
+- **Number of Friend** : Each friend provides a 10% learning ability increase.
+- **Health** : Weekly, you have a (100 - Health)% chance of getting sick.
+
 
 # Available Events
-- **Study**: Decreases {loss_mood_study} mood and {loss_energy_study} energy; if you take other actions, the daily material will be accumulated for future.
-- **Take Course**: (Monday Only) Decreases {loss_mood_taking_courses} mood and {loss_energy_take_courses} energy; provides weekly material guidance.
-- **Socialize**: Decreases {loss_energy_socialize} energy; increases {add_mood_socialize} mood and add 1 friend.
-- **Relax**: Increases {add_mood_relax} mood.
-- **Sleep**: Increases {add_energy_sleep} energy.
-- **Exercise**: Increases {add_health_exercise} health.
+- **study**: Decreases {loss_mood_study} mood and {loss_energy_study} energy; if you take other actions, the daily material will be accumulated for future.
+- **take_course**: (Monday Only) Decreases {loss_mood_take_courses} mood and {loss_energy_take_courses} energy; provides weekly material guidance, which is very helpful for study.
+- **socialize**: Decreases {loss_energy_socialize} energy; increases {add_mood_socialize} mood and add 1 friend. With more friends, you can have better learning ability because you can learn with your firends.
+- **relax**: Increases {add_mood_relax} mood.
+- **sleep**: Increases {add_energy_sleep} energy.
+- **exercise**: Increases {add_health_exercise} health.
 
 # Output Format
 
@@ -60,6 +65,9 @@ Study:Given my current energy level is high and my mood is stable, I can afford 
 
 **Example 2:**
 Exercise:My health is currently low, and I need to increase it to ensure I don't get sick. Exercising will improve my health effectively.
+
+#Note
+You can only choose one of following action to do:[study,take_course,socialize,relax,sleep,exercise]
 "
 #############################
 ANSWER_QUESTION_INSTRUCTION : "

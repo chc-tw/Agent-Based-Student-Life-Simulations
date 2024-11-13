@@ -2,12 +2,12 @@ System:
   DAYS : 56 # 8 Weeks
   PDF_PATH : textbook.pdf
 Agent:
-  LOCAL : False
+  LOCAL : True
   MAX_TOKEN : 0.5
   MODEL : "gpt-4o-mini"
   LOCAL_MODEL: "llama3.1:8b"
 Memory:
-  LOCAL : False
+  LOCAL : True
   CHUNK_SIZE : 2000
   OVERLAP : 200
   EMBED : "" #OpenAIEmbeddings
@@ -15,10 +15,10 @@ Memory:
 Status:
   loss_mood_study : 10
   loss_energy_study : 10
-  loss_mood_taking_courses : 10
-  loss_energy_taking_courses : 10
+  loss_mood_take_courses : 10
+  loss_energy_take_courses : 10
   loss_energy_socializing : 20
   add_mood_socializing : 10
   add_mood_relax : 50
   add_energy_sleep : 50
-  add_energy_exercise : 50
+  add_health_exercise : 50
