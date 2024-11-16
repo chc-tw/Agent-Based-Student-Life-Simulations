@@ -1,0 +1,38 @@
+{
+    "schema": {
+        "name": "answers_evaluation",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "^[0-9]+$": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["correct", "wrong"]
+                    }
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "input" :{
+        "1": {
+            "question": "What is the capital of France?",
+            "real_answer": "Paris",
+            "students": ["Paris", "London", "Berlin"]
+        },
+        "2": {
+            "question": "What is 2+2?",
+            "real_answer": "4",
+            "students": ["3", "4", "5"]
+        }
+    },
+    "output": [
+        {
+            "1": ["correct", "wrong", "wrong"]
+        },
+        {
+            "2": ["wrong", "correct", "wrong"]
+        }
+    ]
+}
