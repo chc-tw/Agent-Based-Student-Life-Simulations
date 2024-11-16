@@ -8,6 +8,7 @@ from src.material import Material
 from src.util import WEEKDAY
 from src.logger import Logger
 from tenacity import retry, stop_after_attempt
+import numpy as np
 import json
 
 @dataclass
@@ -20,7 +21,6 @@ class status:
     
 
 class StudentAgent:
-    material = None
     study_plan = None
     def __init__(self, name : str, personality : str, config : dict, instructions : dict):
         self.name = name
@@ -31,12 +31,13 @@ class StudentAgent:
         self.status_config = config['Status']
         self.llm = self._init_llm()
         self.memory = self._init_memory()
+        self.material = self._init_material(config['System']['PDF_PATH'], config['System']['DAYS'])
 
         self.history = []
         self.status = status(100, 100, 0, 100, 100)
         self.max_token = self.llm_config['MAX_TOKEN']
         self.accumulated_materials = 0
-
+        self.weekly_study_plan = ""
         self.action_dict = {
             "study": self.study,
             "relax": self.relax,
@@ -45,8 +46,7 @@ class StudentAgent:
             "exercise": self.exercise
         }
         self.study_plan = None
-        self._init_material(config['System']['PDF_PATH'], config['System']['DAYS'])
-
+        self.sick = False
         # Initialize logger for this agent
         self.logger = Logger(name, personality)
 
@@ -65,11 +65,12 @@ class StudentAgent:
         </accumulated materials>
 
         Today is {day} {available_events}
+        {sick_message}
         Your decision:
         """
         prompt = ChatPromptTemplate.from_messages([
             ("system", self.instructions['DECIDE_INSTRUCTION']),
-            ("user", input_prompt)
+            ("human", input_prompt)
         ])
         
         inputs = {
@@ -77,7 +78,8 @@ class StudentAgent:
             "history": '\n'.join(self.history),
             "accumulated_materials": self.accumulated_materials,
             "day": day,
-            "available_events": ", You can take course today." if day == "Monday" else ""
+            "available_events": ", You can take course today." if day == "Monday" else "",
+            "sick_message": ", However, you are sick today, so you cannot take course. You can choose to relax, sleep, socialize, or exercise." if self.sick else ""
         }
         
         chain = prompt | self.llm | StrOutputParser()
@@ -102,7 +104,7 @@ class StudentAgent:
         """
         prompt = ChatPromptTemplate.from_messages([
             ("system", self.instructions['STUDY_INSTRUCTION']),
-            ("user", input_prompt)
+            ("human", input_prompt)
         ])
 
         material = self.material.get_docs(self.accumulated_materials, len(self.history)+1)
@@ -111,7 +113,7 @@ class StudentAgent:
         inputs = {
             "token_limit": token_limit,
             "material": material,
-            "study_plan": self.study_plan
+            "study_plan": self.weekly_study_plan
         }
         
         chain = prompt | self.llm | StrOutputParser()
@@ -137,14 +139,24 @@ class StudentAgent:
     def exercise(self):
         self.status.health += self.status_config['add_health_exercise']
 
-
     def take_course(self):
-        if self.study_plan is None:
-            self._update_study_plan(self,len(self.history)+1)
+        self.weekly_study_plan = self.study_plan
         self.status.mood -= self.status_config['loss_mood_take_courses']
         self.status.energy -= self.status_config['loss_energy_take_courses']
-        
-    
+
+    def weekend(self):
+        self.weekly_study_plan = ""
+        self._sick()
+        if self.sick:
+            self.history.append(f"Weekend {(len(self.history)+1) // 7}: Get sick")
+        self.memory.forget(self.accumulated_materials)
+        return self.sick
+
+    def _sick(self):
+        if self.status.health < np.random.randint(1, 101):
+            self.sick = True
+        else:
+            self.sick = False
     @retry(stop=stop_after_attempt(3))
     def takeAction(self, day: int):
         weekday = WEEKDAY[day%7]
@@ -164,6 +176,9 @@ class StudentAgent:
         except KeyError:
             raise ValueError(f"Invalid action: {action}")
         finally:
+            if action == 'take_course': # If the agent takes course, it can take other actions on the same day, and we use sick to prevent it from taking course again.
+                self.sick = True
+                self.takeAction(day)
             return action, self.status.__dict__
 
     def _init_llm(self):
@@ -186,7 +201,7 @@ class StudentAgent:
         self.memory = Memory(self.memory_config, self.instructions, self.llm, self.name)
     
     @classmethod
-    def _update_study_plan(cls, self, day : int):
+    def update_study_plan(cls, self, day : int):
         material = cls.material.get_week_docs(day)
         start_page, end_page = cls.material.get_week_docs(day, return_page=True)
         student_input_prompt = """
@@ -216,12 +231,12 @@ class StudentAgent:
         
         student_prompt = ChatPromptTemplate.from_messages([
             ("system", cls.instructions['TAKE_COURSE_INSTRUCTION ']),
-            ("user", student_input_prompt)
+            ("human", student_input_prompt)
         ])
         
         teacher_prompt = ChatPromptTemplate.from_messages([
             ("system", cls.instructions['TEACH_INSTRUCTION']),
-            ("user", teacher_input_prompt)
+            ("human", teacher_input_prompt)
         ])
         
         plan = ""
@@ -252,10 +267,8 @@ class StudentAgent:
                   "feedback": feedback}
         cls.study_plan = chain.invoke(inputs)
 
-    
-    @classmethod
     def _init_material(cls, pdf_path : str, simulation_days : int):
-        cls.material = Material(pdf_path, simulation_days)
+        return Material(pdf_path, simulation_days)
     
     def __str__(self):
         return f"StudentAgent(name={self.name}, personality={self.personality}, status={self.status}, history={self.history})"

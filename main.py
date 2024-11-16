@@ -32,17 +32,22 @@ def main():
 
     for day in range(1, simulation_days+1):
         print(f"###Day {day} {WEEKDAY[day%7]} ###")
+        if day%7 == 1:
+            StudentAgent.update_study_plan(day, agents[0])
         for agent in agents:
             action, status = agent.takeAction(day)
             if day not in history_data:
                 history_data[day] = {}
             history_data[day][agent.name] = [action, status]
-            print(f"\t{agent.name} : {agent.history}")
+            print(f"\t{agent.name} : {agent.history[-1]}")
 
             if day%7 == 0:
                 for agent in agents:
-                    agent.update_max_token()
-
+                    sick = agent.weekend()
+                    if sick:
+                        print(f"\t{agent.name} : Get sick")
+                        history_data[day][agent.name].append("Get sick")
+    
     with open('agents_history.json', 'w') as json_file:
         json.dump(history_data, json_file, indent=4)
 
