@@ -7,6 +7,9 @@ from langchain.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from typing import List
+from math import ceil
+from random import sample
+
 import os
 def format_docs(docs):
     return "\n".join([doc.page_content for doc in docs])
@@ -19,18 +22,20 @@ class Memory:
             chunk_size=config['CHUNK_SIZE'],
             chunk_overlap=config['OVERLAP'],
         )
-        self.embeddings = OpenAIEmbeddings(openai_api_key=os.environ.get("OPENAI_API_KEY"))
+        self.embedding = self._init_embeddings()
         self.vector_store = self._init_vector_store()
         self.llm = llm
         rag_template = instructions['ANSWER_QUESTION_INSTRUCTION']
         self.rag_prompt = PromptTemplate.from_template(rag_template)
+        self.forget_factor = config['FORGET_FACTOR']
+        self.memory_id = []
         
     def memorize(self, texts : List[str]):
         docs = self.text_splitter.create_documents(texts)
         if self.config['LOCAL']:
-            self.vector_store.add_documents(docs, self.embedding)
+            self.memory_id += self.vector_store.add_documents(docs, self.embedding)
         else:
-            self.vector_store.add_documents(docs, self.embeddings, namespace=self.namespace)
+            self.memory_id += self.vector_store.add_documents(docs, self.embedding, namespace=self.namespace)
     
     def recall(self, query : str):
         if self.config['LOCAL']:
@@ -49,6 +54,16 @@ class Memory:
             )
         return rag_chain.invoke({"question": query})
     
+    def forget(self, days_since_last_study : int):
+        if self.memory_id:
+            num_to_forget = ceil(len(self.memory_id) * (1 - self.forget_factor ** days_since_last_study))
+            ids_to_forget = sample(self.memory_id, num_to_forget)
+            if self.config['LOCAL']:
+                self.vector_store.delete(ids_to_forget)
+            else:
+                self.vector_store.delete(ids_to_forget, namespace=self.namespace)
+            self.memory_id = [id for id in self.memory_id if id not in ids_to_forget]
+
     def _init_vector_store(self):
         if self.config['LOCAL']:
             self.vector_store = Chroma(embedding_function=self.embeddings,
@@ -65,7 +80,7 @@ class Memory:
 
     def _init_embeddings(self):
         if self.config['LOCAL']:
-            self.embeddings = OpenAIEmbeddings()
-        else:
             self.embeddings = OllamaEmbeddings(model=self.config['EMBEDDING_MODEL'])
+        else:
+            self.embeddings = OpenAIEmbeddings()
         return self.embeddings
