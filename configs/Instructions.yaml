@@ -55,16 +55,16 @@ Your daily decisions should take into account your potential impacts on learning
 
 # Output Format
 
-Provide your decision in the following format: 
-the reason for choosing this event, including what factors you considered and how you made the decision:Name of event
+First, provide your reason for making the decision, followed by the decision itself, separated by ':' The format should be likje: 
+the reason for choosing this event:Name of event
 
 # Examples
 
 **Example 1:**
-Given my current energy level is high and my mood is stable, I can afford to study without significantly impacting my mood. Additionally, I have accumulated study material that needs to be addressed:Study
+Given my current energy level is high and my mood is stable, I can afford to study without significantly impacting my mood. Additionally, I have accumulated study material that needs to be addressed:study
 
 **Example 2:**
-My health is currently low, and I need to increase it to ensure I don't get sick. Exercising will improve my health effectively:Exercise
+My health is currently low, and I need to increase it to ensure I don't get sick. Exercising will improve my health effectively:exercise
 
 #Note
 You can only choose one of following action to do:[study,take_course,socialize,relax,sleep,exercise]
