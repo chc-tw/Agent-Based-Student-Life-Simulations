@@ -9,6 +9,7 @@ class Material:
         self.docs = self._load_pdf()
         self.simulation_days = simulation_days
         self.dayIndex = self._index_list()
+        
     def __len__(self):
         return len(self.docs)
     
