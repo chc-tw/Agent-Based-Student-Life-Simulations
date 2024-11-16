@@ -9,6 +9,7 @@ class Material:
         self.docs = self._load_pdf()
         self.simulation_days = simulation_days
         self.dayIndex = self._index_list()
+
     def __len__(self):
         return len(self.docs)
     
@@ -29,12 +30,12 @@ class Material:
         start_page = self.dayIndex[since]
         end_page = self.dayIndex[today]
         if return_page:
-            return start_page, end_page
+            return start_page, end_page, self.docs[start_page:end_page]
         return self.docs[start_page:end_page]
     
     def get_week_docs(self, day :int, return_page: bool = False) -> list[Document] | list[int]:
         start_page = self.dayIndex[day-1]
         end_page = self.dayIndex[day+6]
         if return_page:
-            return start_page, end_page
+            return start_page, end_page, self.docs[start_page:end_page]
         return self.docs[start_page:end_page]
