@@ -33,9 +33,9 @@ class Memory:
     def memorize(self, texts : List[str]):
         docs = self.text_splitter.create_documents(texts)
         if self.config['LOCAL']:
-            self.memory_id += self.vector_store.add_documents(docs, self.embedding)
+            self.memory_id += self.vector_store.add_documents(docs)
         else:
-            self.memory_id += self.vector_store.add_documents(docs, self.embedding, namespace=self.namespace)
+            self.memory_id += self.vector_store.add_documents(docs, namespace=self.namespace)
     
     def recall(self, query : str):
         if self.config['LOCAL']:
@@ -70,6 +70,7 @@ class Memory:
                 persist_directory="./db",
                 collection_name=self.namespace
             )
+            self.vector_store.delete(namespace=self.namespace, delete_all=True)
         else:
             self.vector_store = PineconeVectorStore(
                 index_name=os.environ.get("PINECONE_INDEX_NAME"),

@@ -6,3 +6,4 @@ textbook*
 db
 exam.json
 logs*
+*__pycache__
