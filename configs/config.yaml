@@ -5,9 +5,10 @@ System:
 Agent:
   LOCAL : False
   MAX_TOKEN : 2000
-  STUDENT_MODEL : "gpt-3.5-turbo"
+  STUDENT_MODEL : "gpt-4o-mini"
   TEACHER_MODEL : "gpt-4o"
-  LOCAL_MODEL: "llama3.1:8b"
+  LOCAL_MODEL : "llama3.1:8b"
+  TEMPERATURE : 1
 Memory:
   LOCAL : False
   CHUNK_SIZE : 500

@@ -12,7 +12,7 @@ from src.logger import Logger
 from tenacity import retry, stop_after_attempt
 import numpy as np
 import json
-
+import re
 @dataclass
 class status:
     mood: int
@@ -31,14 +31,14 @@ class StudentAgent:
         self.memory_config = config['Memory']
         self.llm_config = config['Agent']
         self.status_config = config['Status']
-        self.llm = self._init_llm(self.llm_config['STUDENT_MODEL'], self.llm_config['MAX_TOKEN'])
+        self.llm = self._init_llm(self.llm_config['STUDENT_MODEL'], self.llm_config['MAX_TOKEN'], self.llm_config['TEMPERATURE'])
         self.memory = self._init_memory()
         self.material = self._init_material(config['System']['PDF_PATH'], config['System']['DAYS'])
 
         self.history = []
         self.status = status(100, 100, 0, 100, 100)
         self.max_token = self.llm_config['MAX_TOKEN']
-        self.accumulated_materials = 0
+        self.accumulated_materials = 1
         self.weekly_study_plan = ""
         self.action_dict = {
             "study": self.study,
@@ -48,12 +48,16 @@ class StudentAgent:
             "exercise": self.exercise,
             "take_course": self.take_course
         }
+        self.action = ["study", "take_course", "socialize", "relax", "sleep", "exercise"]
+        # self.tools = [self.study, self.relax, self.sleep, self.socialize, self.exercise, self.take_course]
+        # self.llm = self.llm.bind_tools(self.tools, tool_choice="any")
         self.study_plan = None
         self.sick = False
+        self.took_course = False
         # Initialize logger for this agent
         self.logger = Logger(name, personality, log_dir=config['System']['LOG_PATH'])
 
-    def decideAction(self, day: int):
+    def decideAction(self, day: str):
         input_prompt = """
         <current_status>
         {current_status}
@@ -75,43 +79,64 @@ class StudentAgent:
             ("system", self.instructions['DECIDE_INSTRUCTION']),
             ("human", input_prompt)
         ])
+        available_events = (
+            ". You have already taken course today, so you cannot take course again." if self.took_course and day == "Monday"
+            else ", so you can take course today." if day == "Monday" 
+            else ""
+        )
         
+        if self.sick:
+            sick_message = ", However, you are sick today, so you cannot take course. You can choose to study, relax, sleep, socialize, or exercise." 
+        else:
+            sick_message = ""
+            self.sick = False
+        
+
         inputs = {
             "current_status": str(self.status),
             "history": '\n'.join(self.history),
             "accumulated_materials": self.accumulated_materials,
             "day": day,
-            "available_events": ", You can take course today." if day == "Monday" else "",
-            "sick_message": ", However, you are sick today, so you cannot take course. You can choose to relax, sleep, socialize, or exercise." if self.sick else "",
+            "available_events": available_events,
+            "sick_message": sick_message,
             **self.status_config
         }
         
-        chain = prompt | self.llm | StrOutputParser()
+        chain = prompt | self.llm  | StrOutputParser()
         output = chain.invoke(inputs)
-        
-        self.logger.log_prompt(f"Day {day}: decide_action_chain", prompt.format(**inputs), output)
+        # action = output.tool_calls[0]['name']
+        # output = StrOutputParser().invoke(output)
+        self.logger.log_prompt(f"Day {day}: decide action", prompt.format(**inputs), output)
         return output
 
     @retry(stop=stop_after_attempt(3))
     def takeAction(self, day: int):
         weekday = WEEKDAY[day%7]
-        action = self.decideAction(weekday).split(":")[-1]
+        action = self.decideAction(weekday)
+        pattern = r'\b(?:' + '|'.join(self.action) + r')\b'
+        action = re.findall(pattern, action, re.IGNORECASE)[0].lower()
         self.action_dict[action]()
         self._update_max_token()
         if action == 'study':
-            self.accumulated_materials = 0
-        else:
+            self.accumulated_materials = 1
+        elif action != 'take_course':
             self.accumulated_materials += 1
         
+        if action != 'exercise':
+            self.status.health = max(0, self.status.health - 1.5)
+
         status_dict = self.status.__dict__
         self.history.append(f"Day{len(self.history)}: chose to {action}\n updated status: {self.status}")
         self.logger.log_action(action, status_dict, len(self.history)+1)
-        if action == 'take_course': # If the agent takes course, it can take other actions on the same day, and we use sick to prevent it from taking course again.
-            self.sick = True
+
+        if action == 'take_course': # If the agent takes course, it can take other actions on the same day.
+            self.took_course = True
             self.takeAction(day)
         return action, self.status.__dict__
 
+    @retry(stop=stop_after_attempt(3))
     def study(self): 
+        """Study the material"""
         self.status.mood -= self.status_config['loss_mood_study']
         self.status.energy -= self.status_config['loss_energy_study']
         input_prompt = """
@@ -145,32 +170,38 @@ class StudentAgent:
         inputs['material'] = ""
         self.logger.log_prompt("study", prompt.format(**inputs), summary)
         self.memory.memorize([summary])
-        
+ 
     def relax(self):
+        """Relax to add mood"""
         self.status.mood += self.status_config['add_mood_relax']
     
     def sleep(self):
+        """Sleep to add energy"""
         self.status.energy += self.status_config['add_energy_sleep']
 
     def socialize(self):
+        """Socialize to add friends and mood"""
         self.status.friends += 1
         self.status.mood += self.status_config['add_mood_socialize']
         self.status.energy = max(0, self.status.energy - self.status_config['loss_energy_socialize'])
 
     def exercise(self):
+        """Exercise to add health"""
         self.status.health += self.status_config['add_health_exercise']
 
     def take_course(self):
+        """Take course to set study plan"""
         self.weekly_study_plan = self.study_plan
         self.status.mood -= self.status_config['loss_mood_take_courses']
         self.status.energy -= self.status_config['loss_energy_take_courses']
 
     def weekend(self):
         self.weekly_study_plan = ""
+        self.took_course = False
         self._sick()
         if self.sick:
             self.history.append(f"Weekend {(len(self.history)+1) // 7}: Get sick")
-        self.memory.forget(self.accumulated_materials)
+        self.memory.forget(self.accumulated_materials-1)
         return self.sick
 
 
@@ -183,21 +214,21 @@ class StudentAgent:
         else:
             self.sick = False
 
-    def _init_llm(self, model : str, max_token : int = None):
+    def _init_llm(self, model : str, max_token : int = None, temperature : float = 1):
         if self.llm_config['LOCAL']:
-            try:
-                return ChatOllama(model=model, max_tokens=max_token)
+            try:    
+                return ChatOllama(model=model, max_tokens=max_token, temperature=temperature)
             except:
                 raise ValueError(f"Invalid model: {model} for local LLM")
         else:
             try:
-                return ChatOpenAI(model=model, max_tokens=max_token)
+                return ChatOpenAI(model=model, max_tokens=max_token, temperature=temperature)
             except:
                 raise ValueError(f"Invalid model: {model} for remote LLM")
         """TODO: Add more LLM options"""
     
     def _update_max_token(self):
-        self.status.learning_ability = max(10, (self.status.mood + self.status.energy)/2 * (self.status.friends * 10))
+        self.status.learning_ability = max(10, (self.status.mood + self.status.energy)/2 + (self.status.friends * 10))
     
     def _init_memory(self):
         return Memory(self.memory_config, self.instructions, self.llm, self.name)
@@ -303,12 +334,12 @@ class TeacherAgent:
     def _init_llm(self, model : str, max_token : int = None):
         if self.local:
             try:
-                return ChatOllama(model=model, max_tokens=max_token)
+                return ChatOllama(model=model, max_tokens=max_token, temperature=0)
             except:
                 raise ValueError(f"Invalid model: {model} for local LLM")
         else:
             try:
-                return ChatOpenAI(model=model, max_tokens=max_token)
+                return ChatOpenAI(model=model, max_tokens=max_token, temperature=0)
             except:
                 raise ValueError(f"Invalid model: {model} for remote LLM")
         """TODO: Add more LLM options"""
