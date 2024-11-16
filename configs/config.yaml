@@ -1,15 +1,17 @@
 System:
   DAYS : 56 # 8 Weeks
-  PDF_PATH : textbook.pdf
+  PDF_PATH : "textbook.pdf"
+  LOG_PATH : "./logs/{date_time}"
 Agent:
   LOCAL : False
-  MAX_TOKEN : 0.5
-  MODEL : "gpt-4o-mini"
+  MAX_TOKEN : 2000
+  STUDENT_MODEL : "gpt-3.5-turbo"
+  TEACHER_MODEL : "gpt-4o"
   LOCAL_MODEL: "llama3.1:8b"
 Memory:
   LOCAL : False
-  CHUNK_SIZE : 2000
-  OVERLAP : 200
+  CHUNK_SIZE : 500
+  OVERLAP : 100
   EMBED : "" #OpenAIEmbeddings
   LOCAL_EMBED : "nomic-embed-text"
   FORGET_FACTOR : 0.9
@@ -18,8 +20,8 @@ Status:
   loss_energy_study : 10
   loss_mood_take_courses : 10
   loss_energy_take_courses : 10
-  loss_energy_socializing : 20
-  add_mood_socializing : 10
+  loss_energy_socialize : 20
+  add_mood_socialize : 10
   add_mood_relax : 50
   add_energy_sleep : 50
   add_health_exercise : 50

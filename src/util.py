@@ -2,6 +2,7 @@ from langchain_core.documents import Document
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
+from collections import defaultdict
 
 def fetch_pages(page_range  : tuple[int, int], docs : list[Document]) -> str:
     pages = []
@@ -27,6 +28,18 @@ def generate_personality(personality_description: str) -> str:
     llm = ChatOpenAI(model="gpt-4o")
     chain = llm | StrOutputParser()
     return chain.invoke(messages)
+import json
+
+def calculate_accuracy_rate(results: list[dict]) -> dict:
+    accuracy_rates = defaultdict(int)
+    total_count = len(results)
+
+    for question_id, response in enumerate(results, start=1):
+        for student, answer in enumerate(response[str(question_id)]):
+            if answer == "correct":
+                accuracy_rates[student] += 1
+
+    return {student: count / total_count for student, count in accuracy_rates.items()}
 
 
 
