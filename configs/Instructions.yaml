@@ -1,5 +1,5 @@
 STUDY_INSTRUCTION : "
-Study the given material from the specified pages of a book and create a summary. If a study plane available, follow the study plane to study.
+Study the given material from the specified pages of a book and create a summary. If a study guideline available, follow the study guideline to study.
 
 You will be provided with a list of pages and a token limit of {token_limit}. Your task is to thoroughly read and comprehend the material on these pages. Summarize the key points and important details while adhering to the token limit.
 
@@ -13,6 +13,7 @@ You will be provided with a list of pages and a token limit of {token_limit}. Yo
 # Output Format
 - The summary should be in markdown format.
 - Ensure the summary is within the specified token limit of {token_limit}.
+- Don't need to schedule what day need to study what
 
 # Notes
 - Focus on capturing essential information that might be required for answering future questions.
@@ -88,31 +89,32 @@ The answer:
 "
 #############################
 TAKE_COURSE_INSTRUCTION : "
-You are a student agent and need to create a comprehensive and effective study plan to maximize the absorption of course content.
-You will receive learning materials and need to develop a study plan based on them.
-Afterward, a teacher may provide feedback which you can use to optimize your plan.
-If no feedback or previous plan exists, create a first trial plan. Focus on important topics and details that you think are crucial.
+You are a student agent and need to create a comprehensive and effective study guideline to maximize the absorption of course content.
+You will receive learning materials and need to develop a study guideline based on them.
+Afterward, a teacher may provide feedback which you can use to optimize your guideline.
+If no feedback or previous guideline exists, create a first trial guideline. Focus on important topics and details that you think are crucial.
 
 # Steps
 
 1. **Review Learning Material**: Carefully examine the provided learning material to identify key topics and important details.
 2. **Identify Key Topics**: List the most important topics that are central to understanding the course content.
 3. **Detail Important Points**: For each key topic, outline the crucial details and subtopics that need focus.
-4. **Feedback Integration**: If feedback is provided, incorporate suggestions to refine and improve the study plan.
+4. **Feedback Integration**: If feedback is provided, incorporate suggestions to refine and improve the study guideline.
 
 # Output Format
 
-Provide the study plan in a structured format, such as a bulleted list or a numbered outline, detailing key topics, important points, and organized study sessions.
+- Provide the study guideline in a structured format, such as a bulleted list or a numbered outline, detailing key topics, important points, and organized study sessions.
+- Don't need to schedule what day need to study what.
 
 # Examples
-**First Trial Study Plan:**
+**First Trial Study guideline:**
 - **Topic 1: [Key Topic]**
   - Details: [Important Detail 1], [Important Detail 2]
 
 - **Topic 2: [Key Topic]**
   - Details: [Important Detail 1], [Important Detail 2]
 
-**Refined Study Plan (with Feedback):**
+**Refined Study guideline (with Feedback):**
 
 - **Topic 1: [Key Topic]**
   - Details: [Important Detail 1, refined based on feedback], [Important Detail 2, refined based on feedback]
@@ -122,7 +124,7 @@ Provide the study plan in a structured format, such as a bulleted list or a numb
 "
 #############################
 TEACH_INSTRUCTION : "
-Review and evaluate a student-created study plan in relation to specific course material, providing constructive feedback to improve learning effectiveness.
+Review and evaluate a student-created study guideline in relation to specific course material, providing constructive feedback to improve learning effectiveness.
 
 Ensure that the feedback highlights areas for enhancement, reinforces strengths, and includes actionable recommendations that align with the course content.
 
@@ -162,7 +164,7 @@ Provide feedback in a structured format, such as a numbered list or bullet point
 - **Feedback Integration**: 
   - Utilize the teacher's feedback on [Specific Aspect] to refine the approach towards [Topic Name], ensuring alignment with the course objectives.
 
-(Note: Real feedback should be more detailed and tailored to the specific study plan and course content.) 
+(Note: Real feedback should be more detailed and tailored to the specific study guideline and course content.) 
 
 # Notes
 

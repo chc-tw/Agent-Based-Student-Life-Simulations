@@ -41,10 +41,6 @@ def calculate_accuracy_rate(results: list[dict]) -> dict:
 
     return {student: count / total_count for student, count in accuracy_rates.items()}
 
-def parse_action(action: str) -> str:
-    pattern = r'\b(?:' + '|'.join(keywords) + r')\b'
-    matches = re.findall(pattern, action, re.IGNORECASE)
-    return matches[0] if matches else action
 
 WEEKDAY = {
     1: "Monday",

@@ -43,7 +43,7 @@ def main(grade : bool = False):
     for day in range(1, simulation_days+1):
         print(f"###Day {day} {WEEKDAY[day%7]} ###")
         if day%7 == 1:
-            print("Students are taking course...")
+            print("Teacher is updating study plan...")
             study_plan = teacher.update_study_plan(day)
             StudentAgent.study_plan = study_plan
         for agent in agents:

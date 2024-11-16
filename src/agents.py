@@ -300,7 +300,7 @@ class TeacherAgent:
             plan = chain.invoke(inputs)
             inputs['pages'] = start_page, end_page
             inputs['material'] = ""
-            self.logger.log_prompt(f"Day {day} Trial {times+1}: take_course_student_chain", student_prompt.format(**inputs), plan)
+            self.logger.log_prompt(f"Day {day} Trial {times+1}: student", student_prompt.format(**inputs), plan)
 
             # Teacher provides feedback
             chain = teacher_prompt | self.teacher_llm | StrOutputParser()
@@ -309,14 +309,16 @@ class TeacherAgent:
             feedback = chain.invoke(inputs)
             inputs['pages'] = start_page, end_page
             inputs['material'] = ""
-            self.logger.log_prompt(f"Day {day} Trial {times+1}: take_course_teacher_chain", teacher_prompt.format(**inputs), feedback)
+            self.logger.log_prompt(f"Day {day} Trial {times+1}: teacher", teacher_prompt.format(**inputs), feedback)
 
         # Student generates the final study plan
         chain = student_prompt | self.student_llm | StrOutputParser()
         inputs = {"material": material,
                     "previous_plan": plan,
                     "feedback": feedback}
-        self.logger.log_prompt(f"Day {day} Final Trial: take_course_student_chain", student_prompt.format(**inputs), plan)
+        inputs['pages'] = start_page, end_page
+        inputs['material'] = ""
+        self.logger.log_prompt(f"Day {day} Final Trial: student", student_prompt.format(**inputs), plan)
         return chain.invoke(inputs)
     
     def grade(self, input : dict):
