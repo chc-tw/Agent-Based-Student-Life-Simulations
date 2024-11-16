@@ -25,7 +25,7 @@ We simulate the student life in a university environment. The whole experiemnt w
 - **Exercise**: The agents can choose to exercise to increase their health.
 
 #### Status Interaction
-- Days since last time study: At the end of each week, the agent would forget some of their memories (the knowledge they learned) based on this formula: $100\times \text{forgetting factor}^{\text{days after last study}}\%$. The default forgetting factor is 0.9.
+- Days since last time study: At the end of each week, the agent would forget some of their memories (the knowledge they learned) based on this formula: $100\times(1- \text{forgetting factor}^{\text{days after last study}})$%. The default forgetting factor is 0.9.
 - Health: The agent will have a probability to get sick based on this formula: $\text{health}\%$. Once the agent gets sick, the agent won't be able to attend the course on Monday.
 - Number of Friends: The agent can can have better study ability if they have more friends. One friend provides 10% more study ability.
 
