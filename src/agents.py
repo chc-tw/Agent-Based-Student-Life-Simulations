@@ -107,7 +107,7 @@ class StudentAgent:
         # action = output.tool_calls[0]['name']
         # output = StrOutputParser().invoke(output)
         self.logger.log_prompt(f"Day {day}: decide action", prompt.format(**inputs), output)
-        print(output)
+        #print(output)
         return output
 
     @retry(stop=stop_after_attempt(3))
