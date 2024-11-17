@@ -81,7 +81,7 @@ class Memory:
 
     def _init_embeddings(self):
         if self.config['LOCAL']:
-            self.embeddings = OllamaEmbeddings(model=self.config['EMBEDDING_MODEL'])
+            self.embeddings = OllamaEmbeddings(model=self.config['LOCAL_EMBED'])
         else:
             self.embeddings = OpenAIEmbeddings()
         return self.embeddings
