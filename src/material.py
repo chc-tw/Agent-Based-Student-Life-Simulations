@@ -22,12 +22,12 @@ class Material:
     
     def _index_list(self) -> list[int]:
         index = [0] + [ceil(i*(len(self.docs)/self.simulation_days)) for i in range(1, self.simulation_days)]
-        index[-1] = len(self.docs)
+        index[-1] = len(self.docs)-1
         return index
     
     def get_docs(self, accumulated_days :int, today :int, return_page: bool = False) -> list[Document] | list[int]:
         since = today - accumulated_days - 1
-        start_page = self.dayIndex[since]
+        start_page = max(0,self.dayIndex[since]-1)
         end_page = self.dayIndex[today]
         if return_page:
             return start_page, end_page, self.docs[start_page:end_page]
@@ -35,7 +35,7 @@ class Material:
     
     def get_week_docs(self, day :int, return_page: bool = False) -> list[Document] | list[int]:
         start_page = self.dayIndex[day-1]
-        end_page = self.dayIndex[day+6]
+        end_page = self.dayIndex[day+5]
         if return_page:
             return start_page, end_page, self.docs[start_page:end_page]
         return self.docs[start_page:end_page]
