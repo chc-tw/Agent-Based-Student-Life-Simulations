@@ -107,6 +107,7 @@ class StudentAgent:
         # action = output.tool_calls[0]['name']
         # output = StrOutputParser().invoke(output)
         self.logger.log_prompt(f"Day {day}: decide action", prompt.format(**inputs), output)
+        print(output)
         return output
 
     @retry(stop=stop_after_attempt(3))
@@ -114,7 +115,7 @@ class StudentAgent:
         weekday = WEEKDAY[day%7]
         action = self.decideAction(weekday)
         pattern = r'\b(?:' + '|'.join(self.action) + r')\b'
-        action = re.findall(pattern, action, re.IGNORECASE)[0].lower()
+        action = re.findall(pattern, action, re.IGNORECASE)[-1].lower()
         self.action_dict[action]()
         self._update_max_token()
         if action == 'study':
@@ -217,7 +218,7 @@ class StudentAgent:
     def _init_llm(self, model : str, max_token : int = None, temperature : float = 1):
         if self.llm_config['LOCAL']:
             try:    
-                return ChatOllama(model=model, max_tokens=max_token, temperature=temperature)
+                return ChatOllama(model=self.llm_config['LOCAL_STUDENT_MODEL'], max_tokens=max_token, temperature=temperature)
             except:
                 raise ValueError(f"Invalid model: {model} for local LLM")
         else:
@@ -242,8 +243,12 @@ class StudentAgent:
 class TeacherAgent:
     def __init__(self, config : dict, instructions : dict, quiz_config : dict):
         self.local = config['Agent']['LOCAL']
-        self.student_llm = self._init_llm("gpt-4o-mini")
-        self.teacher_llm = self._init_llm("gpt-4o")
+        if self.local:
+            self.student_llm = self._init_llm(config['Agent']['LOCAL_STUDENT_MODEL'])
+            self.teacher_llm = self._init_llm(config['Agent']['LOCAL_TEACHER_MODEL'])
+        else:
+            self.student_llm = self._init_llm("gpt-4o-mini")
+            self.teacher_llm = self._init_llm("gpt-4o")
         self.instructions = instructions
         self.material = Material(config['System']['PDF_PATH'], config['System']['DAYS'])
         self.quiz_config = quiz_config
