@@ -60,8 +60,8 @@ def main(grade : bool = False):
                         print(f"\t{agent.name} : Get sick")
                         history_data[day][agent.name].append("Get sick")
     for quiz_id, quiz in exam.items():
-        question = quiz['question']
-        answer = quiz['real_answer']
+        question = quiz[0]
+        answer = quiz[1]
         reply = []
         for agent in agents:
             reply.append(agent.answer_question(question))
