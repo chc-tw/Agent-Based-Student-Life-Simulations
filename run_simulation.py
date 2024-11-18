@@ -60,12 +60,11 @@ def main(grade : bool = False):
                         print(f"\t{agent.name} : Get sick")
                         history_data[day][agent.name].append("Get sick")
 
-    with open('agets_history.json', 'w') as json_file:
+    with open(f'{log_dir}/agents_history.json', 'w') as json_file:
         json.dump(history_data, json_file, indent=4)
 
     for quiz_id, quiz in tqdm(exam.items(), desc="Answering quizzes", unit="quiz"):
         question = quiz['question']
-        answer = quiz['real_answer']
         reply = []
         for agent in agents:
             reply.append(agent.answer_question(question))
@@ -93,7 +92,7 @@ def main(grade : bool = False):
         print(f"{stdent_name} : {rate}")
 
     
-    with open('agents_grade.json', 'w') as json_file:
+    with open(f'{log_dir}/agents_grade.json', 'w') as json_file:
         json.dump(grade, json_file, indent=4)
 
 
