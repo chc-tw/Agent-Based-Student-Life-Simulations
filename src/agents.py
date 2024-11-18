@@ -24,7 +24,7 @@ class status:
 
 class StudentAgent:
     study_plan = None
-    def __init__(self, name : str, personality : str, config : dict, instructions : dict):
+    def __init__(self, name : str, personality : str, config : dict, instructions : dict, validate : bool = False):
         self.name = name
         self.instructions = instructions
         self.personality = personality
@@ -32,7 +32,7 @@ class StudentAgent:
         self.llm_config = config['Agent']
         self.status_config = config['Status']
         self.llm = self._init_llm(self.llm_config['STUDENT_MODEL'], self.llm_config['MAX_TOKEN'], self.llm_config['TEMPERATURE'])
-        self.memory = self._init_memory()
+        self.memory = self._init_memory(validate)
         self.material = self._init_material(config['System']['PDF_PATH'], config['System']['DAYS'])
 
         self.history = []
@@ -231,8 +231,8 @@ class StudentAgent:
     def _update_max_token(self):
         self.status.learning_ability = max(10, (self.status.mood + self.status.energy)/2 + (self.status.friends * 10))
     
-    def _init_memory(self):
-        return Memory(self.memory_config, self.instructions, self.llm, self.name)
+    def _init_memory(self, validate : bool = False):
+        return Memory(self.memory_config, self.instructions, self.llm, self.name, validate)
     
     def _init_material(cls, pdf_path : str, simulation_days : int):
         return Material(pdf_path, simulation_days)
