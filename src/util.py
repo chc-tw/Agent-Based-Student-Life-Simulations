@@ -34,12 +34,12 @@ def calculate_accuracy_rate(results: list[dict]) -> dict:
     accuracy_rates = defaultdict(int)
     total_count = len(results)
 
-    for question_id, response in enumerate(results, start=1):
-        for student, answer in enumerate(response[str(question_id)]):
+    for question_id, response in results.items():
+        for student, answer in enumerate(response):
             if answer == "correct":
                 accuracy_rates[student] += 1
 
-    return {student: count / total_count for student, count in accuracy_rates.items()}
+    return {student: round(count / total_count, 2) for student, count in accuracy_rates.items()}
 
 
 WEEKDAY = {

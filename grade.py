@@ -9,6 +9,8 @@ from tqdm import tqdm
 from datetime import datetime
 from argparse import ArgumentParser
 import logging
+from pprint import pprint
+
 load_dotenv()
 logging.getLogger("pypdf._reader").setLevel(logging.ERROR)
 
@@ -25,7 +27,7 @@ with open('configs/quiz_config.json', 'r') as file:
 with open('exam.json', 'r') as file:
     exam = json.load(file)
 
-def main(grade : bool = False):
+def main():
     agents = []
     log_dir = config['System']['LOG_PATH'] = config['System']['LOG_PATH'].format(date_time=datetime.now().strftime('%Y%m%d_%H%M%S'))
     os.makedirs('./db', exist_ok=True)
@@ -37,52 +39,22 @@ def main(grade : bool = False):
                              config=config,
                              instructions=instructions)
         agents.append(agent)
-    simulation_days = config['System']['DAYS']
-    history_data = {}
 
-    
-    for day in range(1, simulation_days+1):
-        print(f"###Day {day} {WEEKDAY[day%7]} ###")
-        if day%7 == 1:
-            print("Teacher is updating study plan...")
-            study_plan = ''#teacher.update_study_plan(day)
-            StudentAgent.study_plan = study_plan
-        for agent in agents:
-            action, status = agent.takeAction(day)
-            if day not in history_data:
-                history_data[day] = {}
-            history_data[day][agent.name] = [action, status]
-            print(f"\t{agent.name} : {agent.history[-1]}")
-
-            if day%7 == 0:
-                for agent in agents:
-                    sick = agent.weekend()
-                    if sick:
-                        print(f"\t{agent.name} : Get sick")
-                        history_data[day][agent.name].append("Get sick")
-
-        break
-
-    for quiz_id, quiz in exam.items():
-        print(quiz)
-        question = quiz[0]
-        answer = quiz[1]
+    for quiz_id, quiz in tqdm(exam.items(), desc="Answering quizzes", unit="quiz"):
+        question = quiz['question']
+        answer = quiz['real_answer']
         
-        print(question, answer)
-        print(type(question), type(answer))
         reply = []
         for agent in agents:
             reply.append(agent.answer_question(question))
             exam[quiz_id]['students'] = reply
+        
     
-    with open('agents_history.json', 'w') as json_file:
-        json.dump(history_data, json_file, indent=4)
-
-    if not grade:
-        return
     ## Grade the quizzes
     grade = {}
     batch = {}
+    with open(f'{log_dir}/agents_answer.json', 'w') as json_file:
+        json.dump(exam, json_file, indent=4)
 
     for quiz_id, quiz in tqdm(exam.items(), desc="Grading quizzes", unit="quiz"):
         batch.update({quiz_id: quiz})
@@ -92,18 +64,16 @@ def main(grade : bool = False):
     if len(batch) > 0:
         grade.update(teacher.grade(batch))
 
-    accuracy_rate = calculate_accuracy_rate(exam['output'])
+    accuracy_rate = calculate_accuracy_rate(grade)
     for student, rate in accuracy_rate.items():
         stdent_name = agents[student].name
-        print(f"{stdent_name} : {rate}")
+        print(f"{stdent_name} : {rate}", flush=True)
+
+    with open(f'{log_dir}/agents_grade.json', 'w') as json_file:
+        json.dump(grade, json_file, indent=4)
 
     
-    with open('agents_grade.json', 'w') as json_file:
-        json.dump(grade, json_file, indent=4)
 
 
 if __name__ == "__main__":
-    parser = ArgumentParser()
-    parser.add_argument("--grade", help="Grade the quizzes or not", default=False, action="store_true")
-    args = parser.parse_args()
-    main(args.grade)
+    main()
