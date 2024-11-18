@@ -37,7 +37,8 @@ def main():
         agent = StudentAgent(name=agent_name,
                              personality=agent_personalities,
                              config=config,
-                             instructions=instructions)
+                             instructions=instructions,
+                             validate=True)
         agents.append(agent)
 
     for quiz_id, quiz in tqdm(exam.items(), desc="Answering quizzes", unit="quiz"):

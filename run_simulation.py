@@ -35,7 +35,8 @@ def main(grade : bool = False):
         agent = StudentAgent(name=agent_name,
                              personality=agent_personalities,
                              config=config,
-                             instructions=instructions)
+                             instructions=instructions,
+                             validate=False)
         agents.append(agent)
     simulation_days = config['System']['DAYS']
     history_data = {}

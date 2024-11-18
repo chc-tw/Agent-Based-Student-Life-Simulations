@@ -14,9 +14,10 @@ def format_docs(docs):
     return "\n".join([doc.page_content for doc in docs])
 
 class Memory:
-    def __init__(self, config : dict, instructions : dict, llm, namespace : str):
+    def __init__(self, config : dict, instructions : dict, llm, namespace : str, validate : bool = False):
         self.config = config
         self.namespace = namespace
+        self.validate = validate
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=config['CHUNK_SIZE'],
             chunk_overlap=config['OVERLAP'],
@@ -69,7 +70,8 @@ class Memory:
                 persist_directory="./db",
                 collection_name=self.namespace
             )
-            # self.vector_store.delete(namespace=self.namespace, delete_all=True)
+            if self.validate:
+                self.vector_store.delete(namespace=self.namespace, delete_all=True)
         else:
             self.vector_store = PineconeVectorStore(
                 index_name=os.environ.get("PINECONE_INDEX_NAME"),

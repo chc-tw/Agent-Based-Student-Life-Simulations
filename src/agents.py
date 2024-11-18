@@ -24,7 +24,7 @@ class status:
 
 class StudentAgent:
     study_plan = None
-    def __init__(self, name : str, personality : str, config : dict, instructions : dict):
+    def __init__(self, name : str, personality : str, config : dict, instructions : dict, validate : bool = False):
         self.name = name
         self.instructions = instructions
         self.personality = personality
@@ -32,7 +32,7 @@ class StudentAgent:
         self.llm_config = config['Agent']
         self.status_config = config['Status']
         self.llm = self._init_llm(self.llm_config['STUDENT_MODEL'], self.llm_config['MAX_TOKEN'], self.llm_config['TEMPERATURE'])
-        self.memory = self._init_memory()
+        self.memory = self._init_memory(validate)
         self.material = self._init_material(config['System']['PDF_PATH'], config['System']['DAYS'])
 
         self.history = []
@@ -103,7 +103,7 @@ class StudentAgent:
         }
         
         chain = prompt | self.llm  | StrOutputParser()
-        output = chain.invoke(inputs)
+        output = chain.invoke(inputs, configurable={"llm_temperature": 1.5})
         # action = output.tool_calls[0]['name']
         # output = StrOutputParser().invoke(output)
         self.logger.log_prompt(f"Day {day}: decide action", prompt.format(**inputs), output)
@@ -166,7 +166,7 @@ class StudentAgent:
         }
         
         chain = prompt | self.llm | StrOutputParser()
-        summary = chain.invoke(inputs)
+        summary = chain.invoke(inputs, configurable={"llm_temperature": 1.0})
         inputs['pages'] = start_page, end_page
         inputs['material'] = ""
         self.logger.log_prompt("study", prompt.format(**inputs), summary)
@@ -231,8 +231,8 @@ class StudentAgent:
     def _update_max_token(self):
         self.status.learning_ability = max(10, (self.status.mood + self.status.energy)/2 + (self.status.friends * 10))
     
-    def _init_memory(self):
-        return Memory(self.memory_config, self.instructions, self.llm, self.name)
+    def _init_memory(self, validate : bool = False):
+        return Memory(self.memory_config, self.instructions, self.llm, self.name, validate)
     
     def _init_material(cls, pdf_path : str, simulation_days : int):
         return Material(pdf_path, simulation_days)
@@ -302,7 +302,7 @@ class TeacherAgent:
             inputs = {"material": material,
                         "previous_plan": plan,
                         "feedback": feedback}
-            plan = chain.invoke(inputs)
+            plan = chain.invoke(inputs, configurable={"llm_temperature": 1.0})
             inputs['pages'] = start_page, end_page
             inputs['material'] = ""
             self.logger.log_prompt(f"Day {day} Trial {times+1}: student", student_prompt.format(**inputs), plan)
@@ -311,7 +311,7 @@ class TeacherAgent:
             chain = teacher_prompt | self.teacher_llm | StrOutputParser()
             inputs = {"material": material,
                         "study_plan": plan}
-            feedback = chain.invoke(inputs)
+            feedback = chain.invoke(inputs, configurable={"llm_temperature": 1.0})
             inputs['pages'] = start_page, end_page
             inputs['material'] = ""
             self.logger.log_prompt(f"Day {day} Trial {times+1}: teacher", teacher_prompt.format(**inputs), feedback)
@@ -324,7 +324,7 @@ class TeacherAgent:
         inputs['pages'] = start_page, end_page
         inputs['material'] = ""
         self.logger.log_prompt(f"Day {day} Final Trial: student", student_prompt.format(**inputs), plan)
-        return chain.invoke(inputs)
+        return chain.invoke(inputs, configurable={"llm_temperature": 0.0})
     
     def grade(self, input : dict):
         llm = ChatOpenAI(model='gpt-4o', temperature=0)
@@ -336,7 +336,7 @@ class TeacherAgent:
             AIMessage(content=json.dumps(self.quiz_config['output'])),
             HumanMessage(content=json.dumps(input))
         ]
-        return llm.invoke(message)
+        return llm.invoke(message, configurable={"llm_temperature": 0.0})
     
     def _init_llm(self, model : str, max_token : int = None):
         if self.local:
