@@ -42,8 +42,6 @@ def main():
 
     for quiz_id, quiz in tqdm(exam.items(), desc="Answering quizzes", unit="quiz"):
         question = quiz['question']
-        answer = quiz['real_answer']
-        
         reply = []
         for agent in agents:
             reply.append(agent.answer_question(question))
