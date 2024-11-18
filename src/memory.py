@@ -9,7 +9,6 @@ from langchain_core.output_parsers import StrOutputParser
 from typing import List
 from math import ceil
 from random import sample
-
 import os
 def format_docs(docs):
     return "\n".join([doc.page_content for doc in docs])
@@ -52,7 +51,7 @@ class Memory:
             | self.llm
             | StrOutputParser()
             )
-        return rag_chain.invoke({"question": query})
+        return rag_chain.invoke(query)
     
     def forget(self, days_since_last_study : int):
         if self.memory_id:
@@ -70,7 +69,7 @@ class Memory:
                 persist_directory="./db",
                 collection_name=self.namespace
             )
-            self.vector_store.delete(namespace=self.namespace, delete_all=True)
+            # self.vector_store.delete(namespace=self.namespace, delete_all=True)
         else:
             self.vector_store = PineconeVectorStore(
                 index_name=os.environ.get("PINECONE_INDEX_NAME"),

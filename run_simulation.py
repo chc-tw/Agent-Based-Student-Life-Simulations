@@ -59,16 +59,19 @@ def main(grade : bool = False):
                     if sick:
                         print(f"\t{agent.name} : Get sick")
                         history_data[day][agent.name].append("Get sick")
-    for quiz_id, quiz in exam.items():
-        question = quiz[0]
-        answer = quiz[1]
+
+    with open('agets_history.json', 'w') as json_file:
+        json.dump(history_data, json_file, indent=4)
+
+    for quiz_id, quiz in tqdm(exam.items(), desc="Answering quizzes", unit="quiz"):
+        question = quiz['question']
+        answer = quiz['real_answer']
         reply = []
         for agent in agents:
             reply.append(agent.answer_question(question))
             exam[quiz_id]['students'] = reply
+
     
-    with open('agents_history.json', 'w') as json_file:
-        json.dump(history_data, json_file, indent=4)
 
     if not grade:
         return
@@ -84,7 +87,7 @@ def main(grade : bool = False):
     if len(batch) > 0:
         grade.update(teacher.grade(batch))
 
-    accuracy_rate = calculate_accuracy_rate(exam['output'])
+    accuracy_rate = calculate_accuracy_rate(grade)
     for student, rate in accuracy_rate.items():
         stdent_name = agents[student].name
         print(f"{stdent_name} : {rate}")
@@ -96,6 +99,6 @@ def main(grade : bool = False):
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--grade", help="Grade the quizzes or not", default=False, action="store_true")
+    parser.add_argument("--grade", help="Grade the quizzes or not", default=True, action="store_true")
     args = parser.parse_args()
     main(args.grade)
