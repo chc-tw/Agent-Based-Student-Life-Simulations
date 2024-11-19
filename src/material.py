@@ -9,6 +9,7 @@ class Material:
         self.docs = self._load_pdf()
         self.simulation_days = simulation_days
         self.dayIndex = self._index_list()
+        
 
     def __len__(self):
         return len(self.docs)
@@ -22,7 +23,7 @@ class Material:
     
     def _index_list(self) -> list[int]:
         index = [0] + [ceil(i*(len(self.docs)/self.simulation_days)) for i in range(1, self.simulation_days)]
-        index[-1] = len(self.docs)-1
+        index.append(len(self.docs)-1)
         return index
     
     def get_docs(self, accumulated_days :int, today :int, return_page: bool = False) -> list[Document] | list[int]:
