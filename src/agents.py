@@ -336,7 +336,7 @@ class TeacherAgent:
             AIMessage(content=json.dumps(self.quiz_config['output'])),
             HumanMessage(content=json.dumps(input))
         ]
-        return llm.invoke(message, configurable={"llm_temperature": 0.0})
+        return llm.invoke(message)
     
     def _init_llm(self, model : str, max_token : int = None):
         if self.local:
