@@ -23,6 +23,6 @@ Status:
   loss_energy_take_courses : 10
   loss_energy_socialize : 20
   add_mood_socialize : 10
-  add_mood_relax : 50
-  add_energy_sleep : 50
+  add_mood_relax : 30
+  add_energy_sleep : 30
   add_health_exercise : 50
