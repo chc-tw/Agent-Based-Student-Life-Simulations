@@ -54,12 +54,12 @@ def main(grade : bool = False):
             history_data[day][agent.name] = [action, status]
             print(f"\t{agent.name} : {agent.history[-1]}")
 
-            if day%7 == 0:
-                for agent in agents:
-                    sick = agent.weekend(day)
-                    if sick:
-                        print(f"\t{agent.name} : Get sick")
-                        history_data[day][agent.name].append("Get sick")
+        if day%7 == 0:
+            for agent in agents:
+                sick = agent.weekend(day)
+                if sick:
+                    print(f"\t{agent.name} : Get sick")
+                    history_data[day][agent.name].append("Get sick")
 
     with open(f'{log_dir}/agents_history.json', 'w') as json_file:
         json.dump(history_data, json_file, indent=4)

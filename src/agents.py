@@ -123,9 +123,9 @@ class StudentAgent:
         action = re.findall(pattern, action, re.IGNORECASE)[-1].lower()
         self.action_dict[action](day)
         self._update_max_token()
-        if action == 'study':
-            self.accumulated_materials = 1
-        elif action != 'take_course':
+        #if action == 'study':
+            #self.accumulated_materials = 1
+        if action != 'take_course' and action != 'study':
             self.accumulated_materials += 1
         
         if action != 'exercise':
@@ -161,7 +161,7 @@ class StudentAgent:
             ("human", input_prompt)
         ])
 
-        start_page, end_page, material = self.material.get_docs(self.accumulated_materials, day, return_page=True)
+        start_page, end_page, material, remain = self.material.get_docs(self.accumulated_materials, day, return_page=True)
         token_limit = self.max_token * (self.status.learning_ability/100)
         
         inputs = {
@@ -176,6 +176,10 @@ class StudentAgent:
         inputs['material'] = ""
         self.logger.log_prompt("study", prompt.format(**inputs), summary)
         self.memory.memorize([summary])
+
+        self.accumulated_materials=remain+1 ###
+
+
  
     def relax(self,day):
         """Relax to add mood"""
