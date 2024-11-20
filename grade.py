@@ -41,7 +41,7 @@ def main():
                              validate=True)
         agents.append(agent)
 
-    for quiz_id, quiz in tqdm(exam.items(), desc="Answerin+g quizzes", unit="quiz"):
+    for quiz_id, quiz in tqdm(exam.items(), desc="Answering quizzes", unit="quiz"):
         question = quiz['question']
         reply = []
         for agent in agents:
