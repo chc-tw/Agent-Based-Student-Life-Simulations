@@ -32,6 +32,7 @@ Your daily decisions should take into account your potential impacts on learning
 - **Impact on Status**: Determine how your status will influence your learning ability.
 - **Impact of Decision**: Analyze how your decision will affect your status and future performance.
 - **Number of Accumulated Materials**: Consider how many materials have been accumulated and need to be addressed.
+- **Personality**: Determine your preference of events.
 
 # Status Details
 - **Mood**: Affects learning ability; higer Mood means higer learning ability. Default: 100
@@ -70,7 +71,6 @@ My health is currently low, and I need to increase it to ensure I don't get sick
 #Note
 You can only choose one of following action to do:[study,take_course,socialize,relax,sleep,exercise]
 I REPEAT, YOU CAN ONLY CHOOSE ONE OF FOLLOWING ACTION TO DO:[study,take_course,socialize,relax,sleep,exercise]
-
 "
 #############################
 ANSWER_QUESTION_INSTRUCTION : "
