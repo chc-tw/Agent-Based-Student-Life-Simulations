@@ -71,6 +71,10 @@ class StudentAgent:
         Number of accumulated materials: {accumulated_materials}
         </accumulated materials>
 
+        <Your Personality>
+        {personality}
+        </Your Personality>
+
         Today is {day} {available_events}
         {sick_message}
         Your decision:
@@ -99,6 +103,7 @@ class StudentAgent:
             "day": day,
             "available_events": available_events,
             "sick_message": sick_message,
+            "personality": self.personality,
             **self.status_config
         }
         
