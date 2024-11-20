@@ -116,7 +116,7 @@ class StudentAgent:
         action = self.decideAction(weekday)
         pattern = r'\b(?:' + '|'.join(self.action) + r')\b'
         action = re.findall(pattern, action, re.IGNORECASE)[-1].lower()
-        self.action_dict[action]()
+        self.action_dict[action](day)
         self._update_max_token()
         if action == 'study':
             self.accumulated_materials = 1
@@ -127,8 +127,8 @@ class StudentAgent:
             self.status.health = max(0, self.status.health - 1.5)
 
         status_dict = self.status.__dict__
-        self.history.append(f"Day{len(self.history)}: chose to {action}\n updated status: {self.status}")
-        self.logger.log_action(action, status_dict, len(self.history)+1)
+        self.history.append(f"Day{day}: chose to {action}\n updated status: {self.status}")
+        self.logger.log_action(action, status_dict, day)
 
         if action == 'take_course': # If the agent takes course, it can take other actions on the same day.
             self.took_course = True
@@ -136,7 +136,7 @@ class StudentAgent:
         return action, self.status.__dict__
 
     @retry(stop=stop_after_attempt(3))
-    def study(self): 
+    def study(self, day): 
         """Study the material"""
         self.status.mood -= self.status_config['loss_mood_study']
         self.status.energy -= self.status_config['loss_energy_study']
@@ -156,7 +156,7 @@ class StudentAgent:
             ("human", input_prompt)
         ])
 
-        start_page, end_page, material = self.material.get_docs(self.accumulated_materials, len(self.history)+1, return_page=True)
+        start_page, end_page, material = self.material.get_docs(self.accumulated_materials, day, return_page=True)
         token_limit = self.max_token * (self.status.learning_ability/100)
         
         inputs = {
@@ -172,36 +172,36 @@ class StudentAgent:
         self.logger.log_prompt("study", prompt.format(**inputs), summary)
         self.memory.memorize([summary])
  
-    def relax(self):
+    def relax(self,day):
         """Relax to add mood"""
         self.status.mood += self.status_config['add_mood_relax']
     
-    def sleep(self):
+    def sleep(self, day):
         """Sleep to add energy"""
         self.status.energy += self.status_config['add_energy_sleep']
 
-    def socialize(self):
+    def socialize(self, day):
         """Socialize to add friends and mood"""
         self.status.friends += 1
         self.status.mood += self.status_config['add_mood_socialize']
         self.status.energy = max(0, self.status.energy - self.status_config['loss_energy_socialize'])
 
-    def exercise(self):
+    def exercise(self, day):
         """Exercise to add health"""
         self.status.health += self.status_config['add_health_exercise']
 
-    def take_course(self):
+    def take_course(self, day):
         """Take course to set study plan"""
         self.weekly_study_plan = self.study_plan
         self.status.mood -= self.status_config['loss_mood_take_courses']
         self.status.energy -= self.status_config['loss_energy_take_courses']
 
-    def weekend(self):
+    def weekend(self,day):
         self.weekly_study_plan = ""
         self.took_course = False
         self._sick()
         if self.sick:
-            self.history.append(f"Weekend {(len(self.history)+1) // 7}: Get sick")
+            self.history.append(f"Weekend {day // 7}: Get sick")
         self.memory.forget(self.accumulated_materials-1)
         return self.sick
 

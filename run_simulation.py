@@ -22,7 +22,7 @@ with open('configs/agents.yaml', 'r') as file:
     agents_settings = yaml.safe_load(file)
 with open('configs/quiz_config.json', 'r') as file:
     quiz_config = json.load(file)
-with open('exam.json', 'r') as file:
+with open('exam2.json', 'r') as file:
     exam = json.load(file)
 
 def main(grade : bool = False):
@@ -56,7 +56,7 @@ def main(grade : bool = False):
 
             if day%7 == 0:
                 for agent in agents:
-                    sick = agent.weekend()
+                    sick = agent.weekend(day)
                     if sick:
                         print(f"\t{agent.name} : Get sick")
                         history_data[day][agent.name].append("Get sick")

@@ -9,6 +9,7 @@ class Material:
         self.docs = self._load_pdf()
         self.simulation_days = simulation_days
         self.dayIndex = self._index_list()
+
         
 
     def __len__(self):
@@ -30,6 +31,8 @@ class Material:
         since = today - accumulated_days - 1
         start_page = max(0,self.dayIndex[since]-1)
         end_page = self.dayIndex[today]
+        #print('get docs')
+        #print(today, start_page, end_page)
         if return_page:
             return start_page, end_page, self.docs[start_page:end_page]
         return self.docs[start_page:end_page]

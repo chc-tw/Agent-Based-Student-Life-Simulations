@@ -179,7 +179,7 @@ Grade student exam papers by labeling each student's answer as either 'correct' 
 
 1. For each question in the input set, retrieve the question number, the list of student answers, and the real answer.
 2. Compare each student's answer to the real answer:
-   - If a student’s answer perfectly matches the real answer in both content and phrasing, label it as ‘correct’. In contrast, if there is any deviation—no matter how minor—from the real answer in terms of details, phrasing, emphasis, or scope, label it as ‘wrong’.
+   - If a student’s answer generally matches the real answer in both content and phrasing, label it as ‘correct’, minor mistakes are acceptable. However, if there is a noticeable deviation from the real answer in terms of details, phrasing, emphasis, or scope, label it as ‘wrong’.
    - If a student's answer is 'I don't know', label it as 'wrong'.
    - If a student's answer is empty, label it as 'wrong'.
 3. Collect the results for each question in the specified output format.
