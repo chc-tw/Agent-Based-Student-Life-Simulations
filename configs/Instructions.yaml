@@ -39,7 +39,7 @@ Your daily decisions should take into account your potential impacts on learning
 - **Energy**: Affects learning ability. higer Energy means higer learning ability Default: 100
 - **Friends**: More friends enhance learning ability. Default: 0
 - **Health**: Poor health increases the risk of illness. Once get sick, you can't take course on Monday. Default: 100
-- **Learning Ability**: Represent your learning ability, which is calculated by `max(10, (mood + energy)/2 * (friends * 10))`%, so even if you never sleep or relax, you will still have 10% learning ability. Default: 100
+- **Learning Ability**: Represent your learning ability, which is calculated by `max(10, (mood + energy)/2 + (friends * 10))`%, so even if you never sleep or relax, you will still have 10% learning ability. Default: 100
 
 ## Status Impaces
 - **Mood and Energy** : 10 Mood or Enery means 5% learning ability. If Mood or Energy are extemely low, your learning ability will remain 10% only.
