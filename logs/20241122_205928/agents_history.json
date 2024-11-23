@@ -1,0 +1,2358 @@
+{
+    "1": {
+        "Sheldon": [
+            "take_course",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "2": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "3": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "4": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "5": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "study",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "exercise",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "6": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "7": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "study",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "relax",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "sleep",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "8": {
+        "Sheldon": [
+            "take_course",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "9": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "study",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "10": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "11": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "study",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "12": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "13": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "socialize",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "sleep",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "14": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "15": {
+        "Sheldon": [
+            "take_course",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "16": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "sleep",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "17": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "18": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "socialize",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "19": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "socialize",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "20": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "21": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "22": {
+        "Sheldon": [
+            "take_course",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "23": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "sleep",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "24": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "25": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "sleep",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "sleep",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "26": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "27": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "28": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            },
+            "Get sick"
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "29": {
+        "Sheldon": [
+            "take_course",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "exercise",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "30": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "31": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "exercise",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "32": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "33": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "sleep",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "34": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "35": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            },
+            "Get sick"
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "relax",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "36": {
+        "Sheldon": [
+            "exercise",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "37": {
+        "Sheldon": [
+            "exercise",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "38": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "39": {
+        "Sheldon": [
+            "exercise",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "40": {
+        "Sheldon": [
+            "exercise",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "sleep",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "41": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "42": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "sleep",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            },
+            "Get sick"
+        ]
+    },
+    "43": {
+        "Sheldon": [
+            "take_course",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "exercise",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "44": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "exercise",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "45": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "exercise",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "46": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "study",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "47": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "exercise",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "48": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "study",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "49": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "exercise",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "50": {
+        "Sheldon": [
+            "take_course",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "take_course",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "take_course",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "51": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "52": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "53": {
+        "Sheldon": [
+            "sleep",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "sleep",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "54": {
+        "Sheldon": [
+            "relax",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "socialize",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "take_course",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "55": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "socialize",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "relax",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            }
+        ],
+        "Impossible": [
+            "relax",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    },
+    "56": {
+        "Sheldon": [
+            "study",
+            {
+                "mood": 90,
+                "energy": 30,
+                "friends": 0,
+                "health": 211.5,
+                "learning_ability": 60.0
+            }
+        ],
+        "Nobita": [
+            "relax",
+            {
+                "mood": 1150,
+                "energy": 10,
+                "friends": 5,
+                "health": 107.0,
+                "learning_ability": 630.0
+            }
+        ],
+        "Capybara": [
+            "socialize",
+            {
+                "mood": 320,
+                "energy": 0,
+                "friends": 33,
+                "health": 4.0,
+                "learning_ability": 490.0
+            },
+            "Get sick"
+        ],
+        "Impossible": [
+            "study",
+            {
+                "mood": 420,
+                "energy": 30,
+                "friends": 1,
+                "health": 313.0,
+                "learning_ability": 235.0
+            }
+        ]
+    }
+}
