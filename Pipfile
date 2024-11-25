@@ -17,6 +17,8 @@ langchain-core = "*"
 langchain-community = "*"
 pypdf = "*"
 langchain-chroma = "*"
+gradio = "*"
+streamlit = "*"
 
 [dev-packages]
 ipykernel = "*"

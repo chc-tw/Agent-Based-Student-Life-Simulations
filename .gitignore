@@ -4,6 +4,6 @@ prompt.py
 temp*
 textbook*
 db
-exam.json
+exam*
 logs*
 *__pycache__
