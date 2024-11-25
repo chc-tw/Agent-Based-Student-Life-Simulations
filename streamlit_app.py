@@ -1,7 +1,6 @@
 import streamlit as st
 import yaml
 import os
-from run_simulation import main
 import json
 from datetime import datetime
 import pandas as pd
