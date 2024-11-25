@@ -7,6 +7,7 @@ from datetime import datetime
 import pandas as pd
 import glob
 from src.web.util import parse_log
+from src.util import calculate_accuracy_rate
 
 st.set_page_config(layout="wide")
 
@@ -58,6 +59,8 @@ with col1:
                     st.session_state.agents.append(agent_name)
                     with open(log, 'r') as file:
                         st.session_state.history_prompt[agent_name], st.session_state.history_action[agent_name] = parse_log(file.read())
+                with open(f'{selected_log}/agents_grade.json', 'r') as file:
+                    st.session_state.final_exam_score = calculate_accuracy_rate(json.load(file))
                 st.session_state.simulation_running = True
                 st.success(f"Loaded log from {selected_log}")
         else:
@@ -196,6 +199,10 @@ with col2:
 
                         else:
                             st.warning(f"No data for day {st.session_state.selected_day}")
+                st.write("-"*40)
+                st.subheader("Final Exam Score")
+                for agent, score in st.session_state.final_exam_score.items():
+                    st.write(f"{st.session_state.agents[agent]}: {score}")
 
         elif st.session_state.real_time_data:
             st.header("Work In Progress")
