@@ -33,9 +33,10 @@ class Logger:
         # Log the agent's name and personality at the beginning
         self.logger.info(f"\nPersonality: {self.personality}")
 
-    def log_prompt(self, prompt_name: str, inputs: str, output: str):
+    def log_prompt(self,day: int, prompt_name: str, inputs: str, output: str):
         """Log prompt inputs and outputs"""
         log_data = {
+            "day": day,
             "prompt_name": prompt_name,
             "inputs": inputs,
             "output": output
@@ -50,3 +51,11 @@ class Logger:
             "status": status
         }
         self.logger.info(f"ACTION: {json.dumps(log_data, indent=4)}")
+    
+    def log_sick(self, day: int, status: Dict[str, Any]):
+        log_data = {
+            "day": day,
+            "action": "Get sick",
+            "status": status
+        }
+        self.logger.info(f"SICK: {json.dumps(log_data, indent=4)}")

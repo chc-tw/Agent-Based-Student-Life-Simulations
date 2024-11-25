@@ -34,8 +34,8 @@ class Material:
 
         start_page = max(0,self.dayIndex[since]-1)
         end_page = self.dayIndex[end_index]
-        print('get docs')
-        print(today, start_page, end_page)
+        # print('get docs')
+        # print(today, start_page, end_page)
         if return_page:
             return start_page, end_page, self.docs[start_page:end_page], remain ###
         return self.docs[start_page:end_page], remain ###

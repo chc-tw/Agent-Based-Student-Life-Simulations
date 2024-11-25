@@ -22,10 +22,10 @@ with open('configs/agents.yaml', 'r') as file:
     agents_settings = yaml.safe_load(file)
 with open('configs/quiz_config.json', 'r') as file:
     quiz_config = json.load(file)
-with open('exam2.json', 'r') as file:
+with open('exam.json', 'r') as file:
     exam = json.load(file)
 
-def main(grade : bool = False):
+def main(grade: bool = False, real_time: bool = False, current_day: int = None):
     agents = []
     log_dir = config['System']['LOG_PATH'] = config['System']['LOG_PATH'].format(date_time=datetime.now().strftime('%Y%m%d_%H%M%S'))
     os.makedirs('./db', exist_ok=True)
@@ -38,10 +38,12 @@ def main(grade : bool = False):
                              instructions=instructions,
                              validate=False)
         agents.append(agent)
-    simulation_days = config['System']['DAYS']
+    
+    simulation_days = 1 if real_time else config['System']['DAYS']
+    start_day = current_day if real_time else 1
     history_data = {}
 
-    for day in range(1, simulation_days+1):
+    for day in range(start_day, start_day + simulation_days):
         print(f"###Day {day} {WEEKDAY[day%7]} ###")
         if day%7 == 1:
             print("Teacher is updating study plan...")
@@ -63,7 +65,6 @@ def main(grade : bool = False):
 
     with open(f'{log_dir}/agents_history.json', 'w') as json_file:
         json.dump(history_data, json_file, indent=4)
-
     for quiz_id, quiz in tqdm(exam.items(), desc="Answering quizzes", unit="quiz"):
         question = quiz['question']
         reply = []
