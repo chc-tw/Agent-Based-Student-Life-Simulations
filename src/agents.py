@@ -10,6 +10,7 @@ from src.material import Material
 from src.util import WEEKDAY
 from src.logger import Logger
 from tenacity import retry, stop_after_attempt
+from copy import deepcopy
 import numpy as np
 import json
 import re
@@ -118,7 +119,7 @@ class StudentAgent:
     @retry(stop=stop_after_attempt(3))
     def takeAction(self, day: int):
         weekday = WEEKDAY[day%7]
-        action = self.decideAction(weekday)
+        action = self.decideAction(day)
         pattern = r'\b(?:' + '|'.join(self.action) + r')\b'
         action = re.findall(pattern, action, re.IGNORECASE)[-1].lower()
         self.action_dict[action](day)
@@ -138,7 +139,7 @@ class StudentAgent:
         if action == 'take_course': # If the agent takes course, it can take other actions on the same day.
             self.took_course = True
             self.takeAction(day)
-        return action, self.status.__dict__
+        return action, deepcopy(status_dict)
 
     @retry(stop=stop_after_attempt(3))
     def study(self, day): 
@@ -211,6 +212,7 @@ class StudentAgent:
         self._sick()
         if self.sick:
             self.history.append(f"Weekend {day // 7}: Get sick")
+            self.logger.log_sick(day, self.status.__dict__)
         self.memory.forget(self.accumulated_materials-1)
         return self.sick
 
