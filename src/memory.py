@@ -2,7 +2,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_ollama import OllamaEmbeddings
 from langchain_pinecone import PineconeVectorStore
-from langchain_chroma import Chroma
 from langchain.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
@@ -65,19 +64,11 @@ class Memory:
             self.memory_id = [id for id in self.memory_id if id not in ids_to_forget]
 
     def _init_vector_store(self):
-        if self.config['LOCAL']:
-            self.vector_store = Chroma(embedding_function=self.embeddings,
-                persist_directory="./db",
-                collection_name=self.namespace
-            )
-            if self.validate:
-                self.vector_store.delete(namespace=self.namespace, delete_all=True)
-        else:
-            self.vector_store = PineconeVectorStore(
-                index_name=os.environ.get("PINECONE_INDEX_NAME"),
-                embedding=self.embeddings,
-                namespace=self.namespace
-            )
+        self.vector_store = PineconeVectorStore(
+            index_name=os.environ.get("PINECONE_INDEX_NAME"),
+            embedding=self.embeddings,
+            namespace=self.namespace
+        )
         return self.vector_store
 
     def _init_embeddings(self):
