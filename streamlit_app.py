@@ -84,6 +84,7 @@ with col1:
 
         ### Start real-time simulation ###
         if st.button("Start Real-time Simulation"):
+            pass
             # Update st.session_state.config with new values
             updated_st.session_state.config = st.session_state.config.copy()
             updated_st.session_state.config['Status'].update(status_values)
@@ -165,7 +166,10 @@ with col2:
                 for idx, agent_name in enumerate(st.session_state.agents):
                     with cols[idx]:
                         # Dummy image (replace with actual agent photos later)
-                        st.image("https://via.placeholder.com/300", caption=agent_name)
+                        if os.path.exists(f'configs/images/{agent_name}.png'):
+                            st.image(f"configs/images/{agent_name}.png", caption=agent_name)
+                        else:
+                            st.image("https://via.placeholder.com/300", caption=agent_name)
                         
                         # Display actions and final status
                         if st.session_state.selected_day in st.session_state.history_action[agent_name]:
@@ -179,9 +183,20 @@ with col2:
                             for status_key, status_value in final_status.items():
                                 st.progress(max(0.0, min(1.0, status_value / 100)), 
                                           text=f"{status_key}: {status_value}")
+                            
+                            prompt_data = st.session_state.history_prompt[agent_name][st.session_state.selected_day]
+                            st.write("**Thinking Process:**")
+                            text = ""
+                            for prompt in prompt_data:
+                                if 'decide action' in prompt['prompt_name']:
+                                    text += prompt['output'] + "\n"
+                            expander = st.expander("Show Thinking Process")
+                            with expander:
+                                st.write(text)
+
                         else:
                             st.warning(f"No data for day {st.session_state.selected_day}")
 
         elif st.session_state.real_time_data:
-            pass
+            st.header("Work In Progress")
             
