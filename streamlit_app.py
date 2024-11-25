@@ -59,8 +59,8 @@ with col1:
                     st.session_state.agents.append(agent_name)
                     with open(log, 'r') as file:
                         st.session_state.history_prompt[agent_name], st.session_state.history_action[agent_name] = parse_log(file.read())
-                with open(f'{selected_log}/agents_grade.json', 'r') as file:
-                    st.session_state.final_exam_score = calculate_accuracy_rate(json.load(file))
+                with open(f'{selected_log}/agents_score.json', 'r') as file:
+                    st.session_state.final_exam_score = json.load(file)
                 st.session_state.simulation_running = True
                 st.success(f"Loaded log from {selected_log}")
         else:
@@ -202,7 +202,7 @@ with col2:
                 st.write("-"*40)
                 st.subheader("Final Exam Score")
                 for agent, score in st.session_state.final_exam_score.items():
-                    st.write(f"{st.session_state.agents[agent]}: {score}")
+                    st.write(f"{agent}: {score}")
 
         elif st.session_state.real_time_data:
             st.header("Work In Progress")
