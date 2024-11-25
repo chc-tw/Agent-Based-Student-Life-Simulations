@@ -89,13 +89,17 @@ def main(grade: bool = False, real_time: bool = False, current_day: int = None):
         grade.update(teacher.grade(batch))
 
     accuracy_rate = calculate_accuracy_rate(grade)
+    score = {}
     for student, rate in accuracy_rate.items():
         stdent_name = agents[student].name
         print(f"{stdent_name} : {rate}")
-
+        score[stdent_name] = rate
     
-    with open(f'{log_dir}/agents_grade.json', 'w') as json_file:
+    with open(f'{log_dir}/agents_answers.json', 'w') as json_file:
         json.dump(grade, json_file, indent=4)
+    
+    with open(f'{log_dir}/agents_score.json', 'w') as json_file:
+        json.dump(score, json_file, indent=4)
 
 
 if __name__ == "__main__":
