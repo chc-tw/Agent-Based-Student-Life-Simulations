@@ -66,6 +66,7 @@ with col1:
             st.warning("No log directories found")
     
     with run_tab:
+        st.session_state.real_time_data = True
         # Status value inputs
         st.subheader("Status Values")
         status_values = {
