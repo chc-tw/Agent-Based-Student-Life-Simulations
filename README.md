@@ -1,6 +1,12 @@
 # Agent-Based Student Life Simulations: Discovering the Balance Between Learning and Living
 In this project, we explore the concept of agent-based simulations to model student life. The goal is to discover the balance between learning and living. We utilize the prompt engineering to simulate the student's learning properties and RAG (Retrieval Augmented Generation) to simulate the student's memory.
 
+Here is the overview of the project result:
+![Overview](img/overview.png)
+We can monitor their status, action and thinking process in the simulation.
+![Thinking](img/thinking.png)
+
+You can access the web app [here](https://deploy-cdgww8634vvvt4wgqx8tun.streamlit.app/).
 ## Experiment Design
 ### Agent Settings
 In our experiment, every agent has the 4 attributes:
