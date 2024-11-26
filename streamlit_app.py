@@ -87,38 +87,39 @@ with col1:
 
         ### Start real-time simulation ###
         if st.button("Start Real-time Simulation"):
-            pass
-            # Update st.session_state.config with new values
-            updated_st.session_state.config = st.session_state.config.copy()
-            updated_st.session_state.config['Status'].update(status_values)
-            
-            if uploaded_file:
-                # Save uploaded PDF
-                pdf_path = os.path.join('materials', uploaded_file.name)
-                with open(pdf_path, 'wb') as f:
-                    f.write(uploaded_file.getbuffer())
-                updated_st.session_state.config['System']['PDF_PATH'] = pdf_path
-
-            # Save updated st.session_state.config
-            with open('st.session_state.configs/st.session_state.config.yaml', 'w') as file:
-                yaml.dump(updated_st.session_state.config, file)
-
-            # Clear previous data
-            st.session_state.real_time_data = {}
             st.session_state.simulation_running = True
-            st.session_state.current_day = 1
             
-            # Start real-time simulation
-            placeholder = st.empty()
-            for day in range(1, updated_st.session_state.config['System']['DAYS'] + 1):
-                # Run simulation for one day
-                main(grade=False, real_time=True, current_day=day)
+            # # Update st.session_state.config with new values
+            # updated_st.session_state.config = st.session_state.config.copy()
+            # updated_st.session_state.config['Status'].update(status_values)
+            
+            # if uploaded_file:
+            #     # Save uploaded PDF
+            #     pdf_path = os.path.join('materials', uploaded_file.name)
+            #     with open(pdf_path, 'wb') as f:
+            #         f.write(uploaded_file.getbuffer())
+            #     updated_st.session_state.config['System']['PDF_PATH'] = pdf_path
+
+            # # Save updated st.session_state.config
+            # with open('st.session_state.configs/st.session_state.config.yaml', 'w') as file:
+            #     yaml.dump(updated_st.session_state.config, file)
+
+            # # Clear previous data
+            # st.session_state.real_time_data = {}
+            # st.session_state.simulation_running = True
+            # st.session_state.current_day = 1
+            
+            # # Start real-time simulation
+            # placeholder = st.empty()
+            # for day in range(1, updated_st.session_state.config['System']['DAYS'] + 1):
+            #     # Run simulation for one day
+            #     main(grade=False, real_time=True, current_day=day)
                 
-                # Load the latest results
-                log_dir = updated_st.session_state.config['System']['LOG_PATH'].format(
-                    date_time=datetime.now().strftime('%Y%m%d_%H%M%S'))
-                with open(f'{log_dir}/agents_history.json', 'r') as file:
-                    st.session_state.real_time_data = json.load(file)
+            #     # Load the latest results
+            #     log_dir = updated_st.session_state.config['System']['LOG_PATH'].format(
+            #         date_time=datetime.now().strftime('%Y%m%d_%H%M%S'))
+            #     with open(f'{log_dir}/agents_history.json', 'r') as file:
+            #         st.session_state.real_time_data = json.load(file)
                 
 
 with col2:
