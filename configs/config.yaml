@@ -1,6 +1,7 @@
 System:
   DAYS : 56 # 8 Weeks
   PDF_PATH : "textbook.pdf"
+  EXAM_PATH:
   LOG_PATH : "./logs/{date_time}"
 Agent:
   LOCAL : False

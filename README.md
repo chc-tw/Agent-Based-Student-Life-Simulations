@@ -44,21 +44,33 @@ You can build the environment by running following command:
 ```bash
 pipenv install
 ```
+## Cofing
+Before running the simulation, you need to config the simulation environment by changing the config in `configs/config.yaml`, including:
+- The file path of learning material
+- The file path of exam questions
+- The API key of OpenAI, Pinecone, and Pinecone index name, if you don't run the simulation locally.
 
-## Run the simulation
-You can re-run the simulation by running following command (In our case, we use textbook of "Operating System Concepts by Avi Silberschatz, Peter Baer Galvin, and Greg Gagne" as the learning material):
+### Run the simulation
+You can re-run the simulation by running following command:
 ```bash
 pipenv run python run_simulation.py
 ```
-## Customize the simulation
+
+### Visualize the simulation result
+You can visualize the simulation result by running following command:
+```bash
+pipenv run streamlit run streamlit_app.py
+```
+
 You can customize the simulation by changing the config in `configs/config.yaml`.
 
 # Future Works
 - [x] Enable using local model to perform simulation
-- [ ] Enable customizing the simulation environment, including:
-  - [ ] Learning textbooks & Exam questions
-  - [ ] Agents' personalities
-  - [ ] Simulation time
-- [ ] Build a web app to visualize the simulation result
+- [x] Enable customizing the simulation environment, including:
+  - [x] Learning textbooks & Exam questions
+  - [x] Agents' personalities
+  - [x] Simulation time
+- [x] Build a web app to visualize the simulation result
+  - [ ] Enable real-time simulation
 - [ ] Add more attributes for the agents to have.
 - [ ] Add more activities for the agents to do.
