@@ -22,7 +22,7 @@ with open('configs/agents.yaml', 'r') as file:
     agents_settings = yaml.safe_load(file)
 with open('configs/quiz_config.json', 'r') as file:
     quiz_config = json.load(file)
-with open('exam.json', 'r') as file:
+with open(config['System']['EXAM_PATH'], 'r') as file:
     exam = json.load(file)
 
 def main(grade: bool = False, real_time: bool = False, current_day: int = None):
