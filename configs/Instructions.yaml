@@ -57,7 +57,7 @@ Your daily decisions should take into account your potential impacts on learning
 
 # Output Format
 
-First, provide your reason for making the decision, followed by the decision itself, separated by ':' The format should be likje: 
+First, provide your reason for making the decision, followed by the decision itself, separated by ':' The format should be like: 
 the reason for choosing this event:Name of event
 
 # Examples
